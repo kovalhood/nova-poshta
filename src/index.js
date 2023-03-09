@@ -7,7 +7,8 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/nova-poshta/">
+    <BrowserRouter basename="/">
+    {/* <BrowserRouter basename="/nova-poshta/"> */}
       <App />
     </BrowserRouter>
   </React.StrictMode>

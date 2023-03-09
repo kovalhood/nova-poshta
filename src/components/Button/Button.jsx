@@ -6,9 +6,9 @@ const Button = ({type, title }) => {
   </button>
 }
 
-// Button.propTypes = {
-//   type: PropTypes.string,
-//   title: PropTypes.string.isRequired
-// }
+Button.propTypes = {
+  type: PropTypes.string,
+  title: PropTypes.string.isRequired
+}
 
 export default Button;
