@@ -9,7 +9,7 @@ import SearchHistory from './SearchHistory';
 const Delivery = () => {
     const [searchQuery, setSearchQuery] = useState({ ttn: '' });
 
-       const searches = useSelector(getSearches);
+    const searches = useSelector(getSearches);
     const dispatch = useDispatch();
 
     // Function for setting contacts in store

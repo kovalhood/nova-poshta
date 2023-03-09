@@ -19,6 +19,14 @@ const SearchForm = (props) => {
     }
 
     useEffect(() => {
+        if (form.ttn === ''&& searches.length!==0) {
+            console.log(searches[0])
+            setForm({ ttn: searches[0].number });
+            props.onQuerySearch({ ttn: searches[0].number });
+        }
+    }, []);
+
+    useEffect(() => {
         if (form.ttn !== props.historyQuery.ttn) {
             setForm(props.historyQuery);
         };
