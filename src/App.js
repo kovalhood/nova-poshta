@@ -17,13 +17,6 @@ function App() {
             </Wrapper>}
         />
             
-        <Route path="/ttn-check"
-          element={
-            <Wrapper>
-              <TtnPage />
-            </Wrapper>}
-        />
-            
         <Route path="/branches"
           element={
             <Wrapper>
