@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SearchForm from "./SearchForm/SearchForm";
 import DeliveryStatus from './DeliveryStatus/DeliveryStatus';
+import SearchHistory from './SearchHistory';
 
 const Delivery = () => {
     const [searchQuery, setSearchQuery] = useState({ ttn: '' });
@@ -14,8 +15,10 @@ const Delivery = () => {
     }
 
     return <div>
-        <SearchForm onQuerySearch = { handleSearchQuery } />
-        <DeliveryStatus searchQuery = { searchQuery } />
+        <SearchForm onQuerySearch={handleSearchQuery} />
+        <DeliveryStatus searchQuery={searchQuery} />
+        <SearchHistory searchQuery={searchQuery} />
+        
     </div>
 }
 

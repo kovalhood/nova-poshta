@@ -16,16 +16,10 @@ const SearchForm = (props) => {
         event.preventDefault();
         // After success happens this
         props.onQuerySearch(form);
-
-        resetForm();
-    };
-    
-    const resetForm = () => {
-    setForm({ ttn: '' });
     };
     
     return <form onSubmit={handleSubmit}>
-        <p>20400322248633</p>
+        <p>20400322248632</p>
         <InputTtn name={form.ttn} onTtnChange={handleTtnChange}/>
             
         <Button type={'submit'} title={'Отримати статус ТТН'} />
