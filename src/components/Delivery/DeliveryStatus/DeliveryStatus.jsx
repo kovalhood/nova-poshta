@@ -10,10 +10,7 @@ const DeliveryStatus = ({searchQuery}) => {
             return;
         }
 
-        console.log(ttnSearch)
-
         fetchTtnStatus(ttnSearch).then(res => res.data).then(data => {
-            console.log(data[0]);
             setDeliveryData(data[0]);
         });
     }, [searchQuery.ttn])

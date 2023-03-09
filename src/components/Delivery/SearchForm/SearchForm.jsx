@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSearches } from '../../../redux/searches/searches-selectors';
 import InputTtn from './InputTtn';
 import Button from '../../Button';
 
 const SearchForm = (props) => {
     const [form, setForm] = useState({ ttn: '' });
+
+    const searches = useSelector(getSearches);
+    const dispatch = useDispatch();
+
+    
 
     // Creating handler for our TTN field
     const handleTtnChange = event => {
@@ -11,10 +18,19 @@ const SearchForm = (props) => {
         setForm(prevForm => ({ ...prevForm, [name]: value }));
     }
 
+    useEffect(() => {
+        if (form.ttn !== props.historyQuery.ttn) {
+            setForm(props.historyQuery);
+        };
+    }, [props.historyQuery]);
+
+
     // Creating submit handler
     const handleSubmit = event => {
         event.preventDefault();
+
         // After success happens this
+        // handleSearchInfo();        
         props.onQuerySearch(form);
     };
     
