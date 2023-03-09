@@ -1,0 +1,21 @@
+.link,
+.link__active {
+    position: relative;
+    font-size: 14px;
+    line-height: 0;
+    transition: all 0.2s;
+}
+
+.link {
+    color: black;
+}
+
+.link__active {
+    color: red;
+}
+
+.link:hover,
+.link__active:hover {
+    color: red;
+    text-decoration: none;
+}
