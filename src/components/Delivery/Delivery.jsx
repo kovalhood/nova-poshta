@@ -12,22 +12,19 @@ const Delivery = () => {
        const searches = useSelector(getSearches);
     const dispatch = useDispatch();
 
-
     // Function for setting contacts in store
-    const handleSearchInfo = (searchHaha) => {
-        if (searches.find(search => search.number === searchHaha.ttn)) {
-            dispatch(actions.deleteSearchByName(searchHaha.ttn));
+    const handleSearchInfo = (searchInfo) => {
+        if (searches.find(search => search.number === searchInfo.ttn)) {
+            dispatch(actions.deleteSearchByName(searchInfo.ttn));
         }
 
-        dispatch(actions.addSearch(searchHaha.ttn));
+        dispatch(actions.addSearch(searchInfo.ttn));
     };
     
     const handleSearchQuery = searchQueryValue => {
         if (searchQuery.ttn === searchQueryValue.ttn) {
             return console.log("Input new search query.");
         }
-        console.log(searchQuery);
-        console.log(searchQueryValue);
         
         setSearchQuery(searchQueryValue);
         handleSearchInfo(searchQueryValue);
