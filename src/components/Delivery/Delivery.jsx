@@ -6,6 +6,7 @@ import SearchForm from "./SearchForm/SearchForm";
 import DeliveryStatus from './DeliveryStatus/DeliveryStatus';
 import SearchHistory from './SearchHistory';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { toast } from 'react-toastify';
 import 'react-loading-skeleton/dist/skeleton.css'
 import s from './Delivery.module.scss';
 
@@ -26,7 +27,7 @@ const Delivery = () => {
     
     const handleSearchQuery = searchQueryValue => {
         if (searchQuery.ttn === searchQueryValue.ttn) {
-            return console.log("Input new search query.");
+            return toast.info("Цей ТТН вже відображено. Введіть новий пошуковий запит");
         }
         
         if (searchQueryValue.ttn !== '') {

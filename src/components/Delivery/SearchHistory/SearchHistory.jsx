@@ -11,7 +11,6 @@ const SearchHistory = ({searchQuery}) => {
     const handleDeleteAll = () => {
         dispatch(actions.deleteAll());
     }
-    console.log(searches);
 
     const handleHistorySearch = (event, historyNumber) => {
         event.currentTarget.blur();

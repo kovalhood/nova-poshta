@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchTtnStatus } from '../../../services/nova-poshta-api';
 import StatusSkeleton from './StatusSkeleton';
 import sprite from '../../../images/icons.svg';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import { toast } from 'react-toastify';
 import s from './DeliveryStatus.module.scss';
 
 const DeliveryStatus = ({searchQuery}) => {
@@ -11,6 +11,7 @@ const DeliveryStatus = ({searchQuery}) => {
 
     useEffect(() => {
         setIsLoading(true);
+        
         let ttnSearch = searchQuery.ttn;
         if (ttnSearch === '') {
             return;
@@ -18,7 +19,7 @@ const DeliveryStatus = ({searchQuery}) => {
 
         fetchTtnStatus(ttnSearch).then(res => res.data).then(data => {
             if (data[0] === undefined) {
-                return console.log('Не корректно введені дані');
+                return toast.error("Не корректно введені дані");
             }
             
             setDeliveryData(data[0]);
