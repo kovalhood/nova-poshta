@@ -8,9 +8,6 @@ const SearchForm = (props) => {
     const [form, setForm] = useState({ ttn: '' });
 
     const searches = useSelector(getSearches);
-    const dispatch = useDispatch();
-
-    
 
     // Creating handler for our TTN field
     const handleTtnChange = event => {
@@ -19,8 +16,7 @@ const SearchForm = (props) => {
     }
 
     useEffect(() => {
-        if (form.ttn === ''&& searches.length!==0) {
-            console.log(searches[0])
+        if (searches.length!==0) {
             setForm({ ttn: searches[0].number });
             props.onQuerySearch({ ttn: searches[0].number });
         }
@@ -31,7 +27,6 @@ const SearchForm = (props) => {
             setForm(props.historyQuery);
         };
     }, [props.historyQuery]);
-
 
     // Creating submit handler
     const handleSubmit = event => {
