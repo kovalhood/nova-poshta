@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSearches } from '../../redux/searches/searches-selectors';
 import actions from '../../redux/searches/searches-actions';
 import SearchForm from "./SearchForm/SearchForm";
 import DeliveryStatus from './DeliveryStatus/DeliveryStatus';
 import SearchHistory from './SearchHistory';
+import s from './Delivery.module.scss';
 
 const Delivery = () => {
     const [searchQuery, setSearchQuery] = useState({ ttn: '' });
@@ -26,19 +27,33 @@ const Delivery = () => {
             return console.log("Input new search query.");
         }
         
-        if (searchQuery.ttn !== '') {
+        if (searchQueryValue.ttn !== '') {
             handleSearchInfo(searchQueryValue);
         }
 
         setSearchQuery(searchQueryValue);
     }
 
-    return <div>
+    useEffect(() => {
+        if (searches.length===0) {
+            setSearchQuery({ ttn: '' });
+        };
+    }, [searches]);
+
+    return <>
+        {/* <p>20400322248632</p> */}
         <SearchForm onQuerySearch={handleSearchQuery} historyQuery={ searchQuery } />
-        <DeliveryStatus searchQuery={searchQuery} />
-        <SearchHistory searchQuery={handleSearchQuery} />
-        
-    </div>
+        <div className={s.info_wrapper}>
+            {searches.length === 0
+                ? <></>
+                : <DeliveryStatus searchQuery={searchQuery} />
+            }
+            {searches.length === 0
+                ? <></>
+                : <SearchHistory searchQuery={handleSearchQuery} />
+            }
+        </div>
+    </>
 }
 
 export default Delivery;

@@ -1,0 +1,106 @@
+@import "../../../globalStyles/vars";
+
+.history_wrapper{
+    width: 100%;
+    margin-top: 30px;
+    min-height: 107px;
+    max-height: 300px;
+    padding-bottom: 10px;
+    border: 2px;
+    box-shadow: $mainShadow;
+    transition: $mainTransition;
+
+    @media screen and (min-width: 480px) {
+        width: 400px;
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 258px;
+        margin-top: 0;
+    }
+
+    @media screen and (min-width: 1200px) {
+        width: 300px;
+    }
+}
+
+.history_header{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    height: 50px;
+    width: 100%;
+    background-color: $greyColorSecondary;
+}
+
+.history_title{
+    font-weight: 500;
+}
+
+.clear_all{
+    position: absolute;
+    padding: 5px;
+    right: 10px;
+    border: none;
+    background: none;
+    color: $greyColor;
+    cursor: pointer;
+    transition: $mainTransition;
+
+    &:hover,
+    &:focus {
+        color: $accentColor;
+    }
+}
+
+.history{
+    max-height: 147px;
+    overflow: scroll;
+    padding: 7px 0 0 0;
+    margin: 0 0 0 20px;
+    list-style: none;
+}
+
+.history__item{
+    position: relative;
+}
+
+.history__link{
+    display: block;
+    width: fit-content;
+    padding: 20px 0;
+    font-weight: 500;
+    line-height: 0;
+    color: $greyColor;
+    cursor: pointer;
+    transition: $mainTransition;
+    
+    &:hover,
+    &:focus {
+        color: $accentColor;
+    }
+}
+
+.delete_button{
+    position: absolute;
+    padding: 5px;
+    top: 50%;
+    right: 11px;
+    background: none;
+    border: none;
+    color: $greyColor;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: $mainTransition;
+
+    &:hover,
+    &:focus {
+        color: $accentColor;
+    }
+}
+
+.clear_all__icon,
+.delete_button__icon{
+    fill: currentColor;
+}
