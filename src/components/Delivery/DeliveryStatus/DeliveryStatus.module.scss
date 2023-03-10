@@ -1,0 +1,11 @@
+.status_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    justify-content: left;
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+        width: 50%;
+    }
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchTtnStatus } from '../../../services/nova-poshta-api';
+import s from './DeliveryStatus.module.scss';
 
 const DeliveryStatus = ({searchQuery}) => {
     const [deliveryData, setDeliveryData] = useState([]);
@@ -15,10 +16,25 @@ const DeliveryStatus = ({searchQuery}) => {
         });
     }, [searchQuery.ttn])
 
-    return <div>
-        <p>Статус: { deliveryData.Status }</p>
-        <p>Відправник: { deliveryData.WarehouseSender }</p>
-        <p>Одержувач: { deliveryData.WarehouseRecipient }</p>
+    return <div className={s.status_wrapper}>
+        <div>
+            <div>
+                <h3>Статус:</h3>
+                <p>{deliveryData.Status}</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Відправник:</h3>
+                <p>{ deliveryData.WarehouseSender }</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h3>Одержувач:</h3>
+                <p>{ deliveryData.WarehouseRecipient }</p>
+            </div>
+        </div>
     </div>
 }
 
