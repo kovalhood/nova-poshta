@@ -1,0 +1,62 @@
+@import "../../../globalStyles/vars";
+
+.search_form{
+    position: relative;
+    display: flex;
+    width: 300px;
+    height: 40px;
+    border-radius: 2px;
+    box-shadow: $mainShadow;
+}
+
+.close_button{
+    position: absolute;
+    right: 40px;
+    width: 40px;
+    height: 100%;
+    border: none;
+    border-radius: 2px;
+    color: $greyColor;
+    background-color: $whiteColor;
+    cursor: pointer;
+    transition: $mainTransition;
+
+    &:hover,
+    &:focus {
+        color: $accentColor;
+    }
+}
+
+.search_button__enabled{
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    border: none;
+    border-radius: 2px;
+    color: $whiteColor;
+    background-color: $accentColor;
+    cursor: pointer;
+    transition: $mainTransition;
+
+    &:hover,
+    &:focus{
+        background-color: $accentColorHover;
+    }
+}
+
+.search_button__disabled {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    border: none;
+    border-radius: 2px;
+    color: $greyColor;
+    transition: $mainTransition;
+}
+
+.close_button__icon,
+.search_button__icon{
+    fill: currentColor;
+}

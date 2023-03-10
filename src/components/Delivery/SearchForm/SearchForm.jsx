@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getSearches } from '../../../redux/searches/searches-selectors';
 import InputTtn from './InputTtn';
-import Button from '../../Button';
+import sprite from '../../../images/icons.svg';
+import s from './SearchForm.module.scss';
 
 const SearchForm = (props) => {
     const [form, setForm] = useState({ ttn: '' });
@@ -13,6 +14,11 @@ const SearchForm = (props) => {
     const handleTtnChange = event => {
         const { name, value } = event.currentTarget;
         setForm(prevForm => ({ ...prevForm, [name]: value }));
+    }
+
+    // Avoiding symbols "e", "E", "+", "-", ".", "," in input fields
+    const handleKeyPress = (event) => {
+        ["e", "E", "+", "-", ".", ","].includes(event.key) && event.preventDefault();
     }
 
     useEffect(() => {
@@ -32,16 +38,41 @@ const SearchForm = (props) => {
     const handleSubmit = event => {
         event.preventDefault();
 
+        if (form.ttn === '') {
+            return console.log('Input is empty');
+        }
+        
+        if (form.ttn.length !== 14) {
+            return console.log('Wrong amount of numbers')
+        }
         // After success happens this
         // handleSearchInfo();        
         props.onQuerySearch(form);
     };
+
+    const handleClearInput = event => {
+        return setForm({ ttn: '' });
+    }
     
-    return <form onSubmit={handleSubmit}>
-        <p>20400322248632</p>
-        <InputTtn name={form.ttn} onTtnChange={handleTtnChange}/>
+    return <form onSubmit={handleSubmit} className={s.search_form}>
+        
+        <InputTtn name={form.ttn} onKeyPress={handleKeyPress} onTtnChange={handleTtnChange} />
+        
+        {form.ttn === '' ?
+            <></>
+            :
+            <button type='button' className={s.close_button} onClick={handleClearInput}>
+                <svg className={s.close_button__icon} width="20" height="20">
+                    <use href={`${sprite}#clear`}></use>
+                </svg>
+            </button>
+        }
             
-        <Button type={'submit'} title={'Отримати статус ТТН'} />
+        <button type='submit' className={`${form.ttn !== '' ? s.search_button__enabled : s.search_button__disabled}`}>
+            <svg className={s.search_button__icon} width="20" height="20">
+                <use href={`${sprite}#search`}></use>
+            </svg>
+        </button>
     </form>
 };
 

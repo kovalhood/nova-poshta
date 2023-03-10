@@ -33,12 +33,15 @@ const Delivery = () => {
         setSearchQuery(searchQueryValue);
     }
 
-    return <div>
+    return <>
+        <p>20400322248632</p>
         <SearchForm onQuerySearch={handleSearchQuery} historyQuery={ searchQuery } />
         <DeliveryStatus searchQuery={searchQuery} />
-        <SearchHistory searchQuery={handleSearchQuery} />
-        
-    </div>
+        {searches.length === 0
+            ? <></>
+            : <SearchHistory searchQuery={handleSearchQuery} />
+        }
+    </>
 }
 
 export default Delivery;
