@@ -1,0 +1,31 @@
+@import "../../../globalStyles/vars";
+
+.link,
+.link__active {
+    position: relative;
+    padding: 20px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 0;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.link {
+    color: $greyColor;
+}
+
+.link__active {
+    color: $accentColor;
+}
+
+.link:hover,
+.link__active:hover {
+    color: $accentColor;
+    text-decoration: none;
+}
+
+.menu__item{
+    margin-left: 30px;
+}

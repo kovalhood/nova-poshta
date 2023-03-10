@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import s from './Section.module.scss';
 
 export default function Section({ children }) {
-    return <section>
+    return <section className={s.section}>
         {children}
     </section>
 }
