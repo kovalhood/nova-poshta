@@ -5,7 +5,6 @@ import actions from '../../redux/searches/searches-actions';
 import SearchForm from "./SearchForm/SearchForm";
 import DeliveryStatus from './DeliveryStatus/DeliveryStatus';
 import SearchHistory from './SearchHistory';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { toast } from 'react-toastify';
 import 'react-loading-skeleton/dist/skeleton.css'
 import s from './Delivery.module.scss';
@@ -47,11 +46,6 @@ const Delivery = () => {
     return <>
         {/* <p>20400322248632</p> */}
         <SearchForm onQuerySearch={handleSearchQuery} historyQuery={ searchQuery } />
-        <SkeletonTheme baseColor="#202020" highlightColor="#444">
-            <p>
-            <Skeleton count={1} />
-            </p>
-        </SkeletonTheme>
         <div className={s.info_wrapper}>
             
             {searches.length === 0
