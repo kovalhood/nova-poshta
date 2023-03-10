@@ -26,8 +26,11 @@ const Delivery = () => {
             return console.log("Input new search query.");
         }
         
+        if (searchQuery.ttn !== '') {
+            handleSearchInfo(searchQueryValue);
+        }
+
         setSearchQuery(searchQueryValue);
-        handleSearchInfo(searchQueryValue);
     }
 
     return <div>
