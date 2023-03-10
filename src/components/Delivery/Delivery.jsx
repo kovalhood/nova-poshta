@@ -27,7 +27,7 @@ const Delivery = () => {
             return console.log("Input new search query.");
         }
         
-        if (searchQuery.ttn !== '') {
+        if (searchQueryValue.ttn !== '') {
             handleSearchInfo(searchQueryValue);
         }
 
@@ -42,7 +42,7 @@ const Delivery = () => {
             {searches.length === 0
                 ? <></>
                 : <SearchHistory searchQuery={handleSearchQuery} />
-                }
+            }
         </div>
     </>
 }

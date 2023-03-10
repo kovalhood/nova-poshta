@@ -11,7 +11,7 @@ const SearchHistory = ({searchQuery}) => {
     const handleDeleteAll = () => {
         dispatch(actions.deleteAll());
     }
-
+    console.log(searches);
     const handleHistorySearch = (historyNumber) => {
         let clickedTtn = { ttn: historyNumber };
         searchQuery(clickedTtn);

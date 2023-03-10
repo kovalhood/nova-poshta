@@ -1,11 +1,17 @@
 .info_wrapper{
+    width: 100%;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     @media screen and (min-width: 768px) {
-        width: 100%;
+        align-items: flex-start;
         justify-content: space-between;
         flex-direction: row;
+    }
+
+    @media screen and (min-width: 1200px) {
+        width: 70%;
     }
 }

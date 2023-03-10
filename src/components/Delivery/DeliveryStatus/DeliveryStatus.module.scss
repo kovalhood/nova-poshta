@@ -1,11 +1,46 @@
+@import "../../../globalStyles/vars";
+
 .status_wrapper{
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-self: start;
     justify-content: left;
     width: 100%;
+    transition: $mainTransition;
 
+    @media screen and (min-width: 480px) {
+        width: 400px;
+    }
+    
     @media screen and (min-width: 768px) {
+        align-self: start;
         width: 50%;
     }
+}
+
+.status__second_item{
+    margin-top: 30px;
+}
+
+.status__third_item {
+    margin-top: 4px;
+}
+
+.status__first_item,
+.status__second_item,
+.status__third_item{
+    display: flex;
+}
+
+.status__icon_wrapper{
+    margin-right: 20px;
+}
+
+.status__icon,
+.status__icon_dots{
+    fill: $greyColorStatus;
+}
+
+.status__icon_dots{
+    margin-left: 7px;
 }
