@@ -77,17 +77,15 @@
     cursor: pointer;
     transition: $mainTransition;
     
-    &:hover,
     &:focus {
         outline: none;
-        color: $accentColor;
     }
-}
 
-// prevent sticky hover effects for buttons on touch devices
-@media (hover: hover) {
-    .history__link:hover {
-        background-color: $greyColor;
+    // prevent sticky hover effects for buttons on touch devices
+    @media (hover: hover) {
+        &:hover {
+            color: $accentColor;
+        }
     }
 }
 
