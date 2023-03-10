@@ -12,7 +12,9 @@ const SearchHistory = ({searchQuery}) => {
         dispatch(actions.deleteAll());
     }
     console.log(searches);
-    const handleHistorySearch = (historyNumber) => {
+
+    const handleHistorySearch = (event, historyNumber) => {
+        event.currentTarget.blur();
         let clickedTtn = { ttn: historyNumber };
         searchQuery(clickedTtn);
     }
@@ -35,7 +37,7 @@ const SearchHistory = ({searchQuery}) => {
             {
                 searches.map(({ number, id}) => (
                     <li key={id} className={s.history__item}>
-                        <a className={s.history__link} onClick={() => handleHistorySearch(number)}>{number}</a>
+                        <a className={s.history__link} onClick={(event) => handleHistorySearch(event, number)}>{number}</a>
                         <button type='button' className={s.delete_button} onClick={() => handleDeleteSearch(id)}>
                             <svg className={s.delete_button__icon} width="18" height="18">
                                 <use href={`${sprite}#clear`}></use>

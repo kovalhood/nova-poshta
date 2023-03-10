@@ -74,7 +74,7 @@ const SearchForm = (props) => {
             </button>
         }
             
-        <button type='submit' className={`${form.ttn !== '' ? s.search_button__enabled : s.search_button__disabled}`}>
+        <button onClick={(e) => e.currentTarget.blur()} type='submit' className={`${form.ttn !== '' ? s.search_button__enabled : s.search_button__disabled}`}>
             <svg className={s.search_button__icon} width="20" height="20">
                 <use href={`${sprite}#search`}></use>
             </svg>
