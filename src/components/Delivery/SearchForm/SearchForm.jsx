@@ -49,8 +49,11 @@ const SearchForm = (props) => {
             return toast.warning('Поле вводу не може бути пустим');
         }
         
-        if (form.ttn.length !== 14) {
-            return toast.warning('Невірна кількість цифр в ТТН')
+        if (form.ttn.length < 14) {
+            return toast.warning('Введено меньше ніж 14 цифр ТТН')
+        }
+        if (form.ttn.length > 14) {
+            return toast.warning('Введено більше ніж 14 цифр ТТН')
         }
         // After success happens this
         // handleSearchInfo();        

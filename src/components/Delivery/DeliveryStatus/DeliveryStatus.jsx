@@ -19,16 +19,20 @@ const DeliveryStatus = ({searchQuery}) => {
 
         fetchTtnStatus(ttnSearch).then(res => res.data).then(data => {
             if (data[0] === undefined) {
-                return toast.error("Не корректно введені дані");
+                setDeliveryData({ Status: undefined, WarehouseSender: undefined, WarehouseRecipient: undefined})
+                setIsLoading(false);
+                
+                return toast.error("Доставки з таким ТТН не існує");
             }
-            
+            if (data[0].Status === 'Номер не найден') {
+                setDeliveryData({ Status: undefined, WarehouseSender: undefined, WarehouseRecipient: undefined})
+                setIsLoading(false);
+                
+                return toast.error("Доставки з таким ТТН не існує");
+            }
             setDeliveryData(data[0]);
             setIsLoading(false);
         });
-        // console.log(deliveryData);
-        // console.log(deliveryData.Status);
-        // console.log(deliveryData.WarehouseSender);
-        // console.log(deliveryData.WarehouseRecipient);
     }, [searchQuery.ttn])
 
     return <div className={s.status_wrapper}>

@@ -5,7 +5,7 @@ const InputTtn = ({ name, onTtnChange, onKeyPress}) => {
     type="number"
     name="ttn"
     className={s.input_field}
-    placeholder='Введіть номер ТТН'
+    placeholder="Введіть номер ТТН"
     value={name}
     onKeyDown = {onKeyPress}
     onChange={onTtnChange}

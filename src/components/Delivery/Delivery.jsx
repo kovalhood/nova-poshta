@@ -27,6 +27,7 @@ const Delivery = () => {
     
     const handleSearchQuery = searchQueryValue => {
         if (searchQuery.ttn === searchQueryValue.ttn) {
+            setSearchQuery(searchQueryValue);
             return toast.info("Цей ТТН вже відображено. Введіть новий пошуковий запит");
         }
         
