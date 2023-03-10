@@ -17,8 +17,8 @@ const DeliveryStatus = ({searchQuery}) => {
 
     return <div>
         <p>Статус: { deliveryData.Status }</p>
-        <p>Відправлено: { deliveryData.WarehouseRecipient }</p>
-        <p>Отримано: {deliveryData.WarehouseSender }</p>
+        <p>Відправник: { deliveryData.WarehouseSender }</p>
+        <p>Одержувач: { deliveryData.WarehouseRecipient }</p>
     </div>
 }
 
