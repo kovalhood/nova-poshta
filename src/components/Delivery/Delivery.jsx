@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSearches } from '../../redux/searches/searches-selectors';
 import actions from '../../redux/searches/searches-actions';
@@ -34,11 +34,20 @@ const Delivery = () => {
         setSearchQuery(searchQueryValue);
     }
 
+    useEffect(() => {
+        if (searches.length===0) {
+            setSearchQuery({ ttn: '' });
+        };
+    }, [searches]);
+
     return <>
-        <p>20400322248632</p>
+        {/* <p>20400322248632</p> */}
         <SearchForm onQuerySearch={handleSearchQuery} historyQuery={ searchQuery } />
         <div className={s.info_wrapper}>
-            <DeliveryStatus searchQuery={searchQuery} />
+            {searches.length === 0
+                ? <></>
+                : <DeliveryStatus searchQuery={searchQuery} />
+            }
             {searches.length === 0
                 ? <></>
                 : <SearchHistory searchQuery={handleSearchQuery} />

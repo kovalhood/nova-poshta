@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import s from './InputTTn.module.scss';
 
 const InputTtn = ({ name, onTtnChange, onKeyPress}) => {
@@ -12,9 +11,5 @@ const InputTtn = ({ name, onTtnChange, onKeyPress}) => {
     onChange={onTtnChange}
   />
 }
-
-// InputTtn.propTypes = {
-//   name: PropTypes.string.isRequired,
-// }
 
 export default InputTtn;

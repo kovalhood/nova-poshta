@@ -13,12 +13,16 @@ const DeliveryStatus = ({searchQuery}) => {
         }
 
         fetchTtnStatus(ttnSearch).then(res => res.data).then(data => {
+            if (data[0] === undefined) {
+                return console.log('Не корректно введені дані');
+            }
+            
             setDeliveryData(data[0]);
         });
-        console.log(deliveryData);
-        console.log(deliveryData.Status);
-        console.log(deliveryData.WarehouseSender);
-        console.log(deliveryData.WarehouseRecipient);
+        // console.log(deliveryData);
+        // console.log(deliveryData.Status);
+        // console.log(deliveryData.WarehouseSender);
+        // console.log(deliveryData.WarehouseRecipient);
     }, [searchQuery.ttn])
 
     return <div className={s.status_wrapper}>
@@ -30,7 +34,7 @@ const DeliveryStatus = ({searchQuery}) => {
             </div>
             <div>
                 <h3>Статус:</h3>
-                {deliveryData.Status === 'Номер не найден'
+                {deliveryData.Status === undefined || deliveryData.Status === 'Номер не найден'
                     ? <p>Номер не знайдено</p>
                     : <p>{deliveryData.Status}</p>
                 }

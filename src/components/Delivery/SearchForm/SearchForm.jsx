@@ -34,6 +34,12 @@ const SearchForm = (props) => {
         };
     }, [props.historyQuery]);
 
+    useEffect(() => {
+        if (searches.length===0) {
+            setForm({ ttn: '' });
+        };
+    }, [searches]);
+
     // Creating submit handler
     const handleSubmit = event => {
         event.preventDefault();
