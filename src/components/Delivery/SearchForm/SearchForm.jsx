@@ -67,8 +67,8 @@ const SearchForm = (props) => {
         {form.ttn === '' ?
             <></>
             :
-            <button type='button' className={s.close_button} onClick={handleClearInput}>
-                <svg className={s.close_button__icon} width="20" height="20">
+            <button type='button' className={s.clear_button} onClick={handleClearInput}>
+                <svg className={s.clear_button__icon} width="20" height="20">
                     <use href={`${sprite}#clear`}></use>
                 </svg>
             </button>

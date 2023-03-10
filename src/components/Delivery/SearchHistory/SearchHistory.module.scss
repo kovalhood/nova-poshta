@@ -50,6 +50,7 @@
 
     &:hover,
     &:focus {
+        outline: none;
         color: $accentColor;
     }
 }
@@ -78,6 +79,7 @@
     
     &:hover,
     &:focus {
+        outline: none;
         color: $accentColor;
     }
 }
@@ -96,6 +98,7 @@
 
     &:hover,
     &:focus {
+        outline: none;
         color: $accentColor;
     }
 }

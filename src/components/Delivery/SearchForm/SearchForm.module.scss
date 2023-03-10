@@ -18,11 +18,14 @@
     }
 }
 
-.close_button{
+.clear_button{
     position: absolute;
     right: 40px;
     width: 40px;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     border-radius: 2px;
     color: $greyColor;
@@ -32,6 +35,7 @@
 
     &:hover,
     &:focus {
+        outline: none;
         color: $accentColor;
     }
 }
@@ -41,6 +45,9 @@
     right: 0;
     width: 40px;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     border-radius: 2px;
     color: $whiteColor;
@@ -50,6 +57,7 @@
 
     &:hover,
     &:focus{
+        outline: none;
         background-color: $accentColorHover;
     }
 }
@@ -59,13 +67,16 @@
     right: 0;
     width: 40px;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     border-radius: 2px;
     color: $greyColor;
     transition: $mainTransition;
 }
 
-.close_button__icon,
+.clear_button__icon,
 .search_button__icon{
     fill: currentColor;
 }
