@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { getSearches } from '../../../redux/searches/searches-selectors';
 import InputTtn from './InputTtn';
 import sprite from '../../../images/icons.svg';
+import { toast } from 'react-toastify';
 import s from './SearchForm.module.scss';
 
 const SearchForm = (props) => {
@@ -45,11 +46,11 @@ const SearchForm = (props) => {
         event.preventDefault();
 
         if (form.ttn === '') {
-            return console.log('Input is empty');
+            return toast.warning('Поле вводу не може бути пустим');
         }
         
         if (form.ttn.length !== 14) {
-            return console.log('Wrong amount of numbers')
+            return toast.warning('Невірна кількість цифр в ТТН')
         }
         // After success happens this
         // handleSearchInfo();        

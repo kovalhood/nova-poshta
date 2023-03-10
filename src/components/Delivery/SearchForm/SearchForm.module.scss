@@ -84,3 +84,10 @@
 .search_button__icon{
     fill: currentColor;
 }
+
+// prevent sticky hover effects for buttons on touch devices
+@media (hover: hover) {
+    .search_button__enabled:hover {
+        background-color: $accentColorHover;
+    }
+}

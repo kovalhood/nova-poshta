@@ -84,6 +84,13 @@
     }
 }
 
+// prevent sticky hover effects for buttons on touch devices
+@media (hover: hover) {
+    .history__link:hover {
+        background-color: $accentColor;
+    }
+}
+
 .delete_button{
     position: absolute;
     padding: 5px;
