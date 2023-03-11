@@ -1,5 +1,5 @@
 import sprite from '../../../../images/icons.svg';
-import Skeleton from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton';
 import s from './StatusSkeleton.module.scss';
 
 const StatusSkeleton = () => {

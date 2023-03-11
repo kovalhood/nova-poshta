@@ -42,7 +42,7 @@ export function fetchBranchesList(cityName, warehouseId) {
                 "CityName" : `${cityName}`,
                 // "CityRef" : "00000000-0000-0000-0000-000000000000",
                 // "Page" : "1",
-                // "Limit" : "50",
+                "Limit" : "50",
                 // "Language" : "UA",
                 // "TypeOfWarehouseRef" : "00000000-0000-0000-0000-000000000000",
                 "WarehouseId" : `${warehouseId}`
