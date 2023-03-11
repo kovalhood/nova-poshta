@@ -13,18 +13,20 @@ const StatusSkeleton = () => {
             </div>
             <div>
                 <h3 className={s.status__title}>Статус:</h3>
-                <Skeleton count={1} width={200} />
+                <Skeleton count={1} width={220} />
+                <Skeleton count={1} width={170} />
             </div>
         </div>
         <div className={s.status__second_item}>
             <div className={s.status__icon_wrapper}>
                 <svg className={s.status__icon} width="40" height="40">
-                    <use href={`${sprite}#box1`}></use>
+                    <use href={`${sprite}#box`}></use>
                 </svg>
             </div>
             <div>
                 <h3 className={s.status__title}>Відправник:</h3>
-                <Skeleton count={1} width={200} />
+                <Skeleton count={1} width={220} />
+                <Skeleton count={1} width={170} />
             </div>
             
         </div>
@@ -36,12 +38,13 @@ const StatusSkeleton = () => {
         <div className={s.status__third_item}>
             <div className={s.status__icon_wrapper}>
                 <svg className={s.status__icon} width="40" height="40">
-                    <use href={`${sprite}#location1`}></use>
+                    <use href={`${sprite}#location`}></use>
                 </svg>
             </div>
             <div>
                 <h3 className={s.status__title}>Одержувач:</h3>
-                <Skeleton count={1} width={200} />
+                <Skeleton count={1} width={220} />
+                <Skeleton count={1} width={170} />
             </div>
         </div>
     </>

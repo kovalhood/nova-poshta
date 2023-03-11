@@ -33,7 +33,7 @@ const Delivery = () => {
         if (searchQueryValue.ttn !== '') {
             handleSearchInfo(searchQueryValue);
         }
-
+        
         setSearchQuery(searchQueryValue);
     }
 

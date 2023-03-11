@@ -48,22 +48,22 @@ const DeliveryStatus = ({searchQuery}) => {
             <div>
                 <h3 className={s.status__title}>Статус:</h3>
                 {deliveryData.Status === undefined || deliveryData.Status === 'Номер не найден'
-                    ? <p>Номер не знайдено</p>
-                    : <p>{deliveryData.Status}</p>
+                    ? <p className={s.status__state}>Номер не знайдено</p>
+                    : <p className={s.status__state}>{deliveryData.Status}</p>
                 }
             </div>
         </div>
         <div className={s.status__second_item}>
             <div className={s.status__icon_wrapper}>
                 <svg className={s.status__icon} width="40" height="40">
-                    <use href={`${sprite}#box1`}></use>
+                    <use href={`${sprite}#box`}></use>
                 </svg>
             </div>
             <div>
                 <h3 className={s.status__title}>Відправник:</h3>
                 {deliveryData.WarehouseSender === ''|| deliveryData.WarehouseSender === undefined
-                    ? <p>Інформація відсутня</p>
-                    : <p>{deliveryData.WarehouseSender}</p>
+                    ? <p className={s.status__state}>Інформація відсутня</p>
+                    : <p className={s.status__state}>{deliveryData.WarehouseSender}</p>
                 }
             </div>
             
@@ -76,14 +76,14 @@ const DeliveryStatus = ({searchQuery}) => {
         <div className={s.status__third_item}>
             <div className={s.status__icon_wrapper}>
                 <svg className={s.status__icon} width="40" height="40">
-                    <use href={`${sprite}#location1`}></use>
+                    <use href={`${sprite}#location`}></use>
                 </svg>
             </div>
             <div>
                 <h3 className={s.status__title}>Одержувач:</h3>
                 {deliveryData.WarehouseRecipient === '' || deliveryData.WarehouseSender === undefined
-                    ? <p>Інформація відсутня</p>
-                    : <p>{deliveryData.WarehouseRecipient}</p>
+                    ? <p className={s.status__state}>Інформація відсутня</p>
+                    : <p className={s.status__state}>{deliveryData.WarehouseRecipient}</p>
                 }
             </div>
         </div></>
