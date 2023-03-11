@@ -1,8 +1,11 @@
-const InputCity = ({ name, onCityChange}) => {
+import s from './InputCity.module.scss';
+
+const InputCity = ({ name, onCityChange }) => {
   return <input
     type="text"
     name="city"
-    placeholder="Введіть назву міста"
+    placeholder="Назва міста"
+    className={s.input_field}
     value={name}
     onChange={onCityChange}
   />
