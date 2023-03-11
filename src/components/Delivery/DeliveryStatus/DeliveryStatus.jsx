@@ -14,30 +14,32 @@ const DeliveryStatus = ({searchQuery}) => {
         
         let ttnSearch = searchQuery.ttn;
         if (ttnSearch === '') {
-            return;
+            return;;
         }
-
+        
         fetchTtnStatus(ttnSearch).then(res => res.data).then(data => {
             if (data[0] === undefined) {
-                setDeliveryData({ Status: undefined, WarehouseSender: undefined, WarehouseRecipient: undefined})
+                setDeliveryData({ Status: undefined, WarehouseSender: undefined, WarehouseRecipient: undefined })
                 setTimeout(() => {
                     setIsLoading(false);
                 }, 1000);
-                
+
                 return toast.error("Доставки з таким ТТН не існує");
             }
+
             if (data[0].Status === 'Номер не найден') {
-                setDeliveryData({ Status: undefined, WarehouseSender: undefined, WarehouseRecipient: undefined})
+                setDeliveryData({ Status: undefined, WarehouseSender: undefined, WarehouseRecipient: undefined })
                 setTimeout(() => {
                     setIsLoading(false);
                 }, 1000);
-                
+
                 return toast.error("Доставки з таким ТТН не існує");
             }
+
             setDeliveryData(data[0]);
             setIsLoading(false);
         });
-    }, [searchQuery.ttn])
+    }, [searchQuery.ttn]);
 
     return <div className={s.status_wrapper}>
         {isLoading === true

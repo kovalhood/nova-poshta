@@ -48,11 +48,10 @@ const Delivery = () => {
         <SearchForm onQuerySearch={handleSearchQuery} historyQuery={ searchQuery } />
         <div className={s.info_wrapper}>
             
-            {searches.length === 0
+            {searchQuery.ttn === ''
                 ? <></>
                 : <DeliveryStatus searchQuery={searchQuery} />
                 }
-            
             
             {searches.length === 0
                 ? <></>

@@ -22,12 +22,13 @@ const SearchForm = (props) => {
         ["e", "E", "+", "-", ".", ","].includes(event.key) && event.preventDefault();
     }
 
-    useEffect(() => {
-        if (searches.length!==0) {
-            setForm({ ttn: searches[0].number });
-            props.onQuerySearch({ ttn: searches[0].number });
-        }
-    }, []);
+    // Automatically search last query from LocalStorage after refresh of the page
+    // useEffect(() => {
+    //     if (searches.length!==0) {
+    //         setForm({ ttn: searches[0].number });
+    //         props.onQuerySearch({ ttn: searches[0].number });
+    //     }
+    // }, []);
 
     useEffect(() => {
         if (form.ttn !== props.historyQuery.ttn) {
@@ -48,13 +49,13 @@ const SearchForm = (props) => {
         if (form.ttn === '') {
             return toast.warning('Поле вводу не може бути пустим');
         }
-        
         if (form.ttn.length < 14) {
             return toast.warning('Введено меньше ніж 14 цифр ТТН')
         }
         if (form.ttn.length > 14) {
             return toast.warning('Введено більше ніж 14 цифр ТТН')
         }
+
         // After success happens this
         // handleSearchInfo();        
         props.onQuerySearch(form);

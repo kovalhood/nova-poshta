@@ -1,13 +1,12 @@
 .info_wrapper{
     width: 100%;
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     @media screen and (min-width: 768px) {
         align-items: flex-start;
-        justify-content: space-between;
+        justify-content: center;
         flex-direction: row;
     }
 

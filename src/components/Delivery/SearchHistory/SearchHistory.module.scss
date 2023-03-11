@@ -2,7 +2,6 @@
 
 .history_wrapper{
     width: 100%;
-    margin-top: 30px;
     min-height: 107px;
     max-height: 300px;
     padding-bottom: 10px;
@@ -15,12 +14,8 @@
     }
 
     @media screen and (min-width: 768px) {
-        width: 258px;
-        margin-top: 0;
-    }
-
-    @media screen and (min-width: 1200px) {
         width: 300px;
+        margin-top: 0;
     }
 }
 
