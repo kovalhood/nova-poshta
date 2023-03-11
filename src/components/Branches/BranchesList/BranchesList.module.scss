@@ -8,6 +8,7 @@
 
     list-style: none;
     padding: 0;
+    margin: 0;
     margin-top: -15px;
 
     @media screen and (min-width: 768px) {
@@ -68,6 +69,15 @@
     font-size: 14px;
     margin-top: 10px;
     letter-spacing: $mainLetterSpacing;
+
+    // Adding limit of 2 strings in address. 
+    // If address is too long it will be with ... at the end of second line
+    @media screen and (min-width: 768px) {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
 }
 
 .branches__schedule{
