@@ -34,9 +34,12 @@ const SearchHistory = ({searchQuery}) => {
 
         <ul className={s.history}>
             {
-                searches.map(({ number, id}) => (
+                searches.map(({ number, id, date}) => (
                     <li key={id} className={s.history__item}>
-                        <a className={s.history__link} onClick={(event) => handleHistorySearch(event, number)}>{number}</a>
+                        <div className={s.history__event} onClick={(event) => handleHistorySearch(event, number)}>
+                            <p className={s.history__time}>{new Date(date).toLocaleString()}</p>
+                            <a className={s.history__link} >{number}</a>
+                        </div>
                         <button type='button' className={s.delete_button} onClick={() => handleDeleteSearch(id)}>
                             <svg className={s.delete_button__icon} width="18" height="18">
                                 <use href={`${sprite}#clear`}></use>

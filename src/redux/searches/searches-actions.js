@@ -4,6 +4,7 @@ import { createAction } from '@reduxjs/toolkit'
 const addSearch = createAction('searches/Add', (number) => ({
     payload: {
         id: nanoid(6),
+        date: Date.now(),
         number,
     },
 }));
