@@ -79,7 +79,7 @@ const BranchesList = ({searchQuery}) => {
                                 : <></>
                             }
 
-                            {Schedule.Sunday === '00:01-23:59' || Schedule.Monday === '00:01-23:59' || Schedule.Tuesday === '00:01-23:59' || Schedule.Wednesday === '00:01-23:59' || Schedule.Thursday === '00:01-23:59' || Schedule.Friday === '00:01-23:59' || Schedule.Saturday === '00:01-23:59'
+                            {Schedule.Sunday === '00:01-23:59' && Schedule.Monday === '00:01-23:59' && Schedule.Tuesday === '00:01-23:59' && Schedule.Wednesday === '00:01-23:59' && Schedule.Thursday === '00:01-23:59' && Schedule.Friday === '00:01-23:59' && Schedule.Saturday === '00:01-23:59'
                                 ? <p className={s.branches__schedule_open}>Відчинено цілодобово</p>
                                 : <></>
                             }
