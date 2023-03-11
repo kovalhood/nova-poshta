@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getSearches } from '../../../redux/searches/searches-selectors';
-import sprite from '../../../images/icons.svg';
-import { toast } from 'react-toastify';
 import InputCity from './InputCity/InputCity';
 import InputWarehouse from './InputWarehouse';
+import sprite from '../../../images/icons.svg';
+import { toast } from 'react-toastify';
+import s from './SearchBranches.module.scss';
 
 const SearchBranches = (props) => {
     const [form, setForm] = useState({ city: '' , warehouse: ''});
@@ -29,12 +30,26 @@ const SearchBranches = (props) => {
         props.onQuerySearch(form);
     };
 
-    return <form onSubmit={handleSubmit}>
+    const handleClearInput = event => {
+        return setForm({ city: '' , warehouse: ''});
+    }
+
+    return <form onSubmit={handleSubmit} className={s.search_form}>
         <InputCity name={form.city} onCityChange={handleFormChange} />
         <InputWarehouse name={form.warehouse} onKeyPress={handleKeyPress} onWarehouseChange={handleFormChange}/>
         
-        <button onClick={(e) => e.currentTarget.blur()} type='submit'>
-            <svg width="20" height="20">
+        {form.city === '' && form.warehouse === '' ?
+            <></>
+            :
+            <button type='button' className={s.clear_button} onClick={handleClearInput}>
+                <svg className={s.clear_button__icon} width="20" height="20">
+                    <use href={`${sprite}#clear`}></use>
+                </svg>
+            </button>
+        }
+
+        <button onClick={(e) => e.currentTarget.blur()} type='submit' className={`${form.city !== '' ? s.search_button__enabled : s.search_button__disabled}`}>
+            <svg className={s.search_button__icon} width="20" height="20">
                 <use href={`${sprite}#search`}></use>
             </svg>
         </button>

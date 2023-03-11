@@ -1,8 +1,11 @@
-const InputWarehouse = ({ name, onWarehouseChange, onKeyPress}) => {
+import s from './InputWarehouse.module.scss';
+
+const InputWarehouse = ({ name, onWarehouseChange, onKeyPress }) => {
   return <input
     type="number"
     name="warehouse"
-    placeholder="Введіть номер відділення"
+    placeholder="№ Відділення"
+    className={s.input_field}
     value={name}
     onKeyDown = {onKeyPress}
     onChange={onWarehouseChange}
