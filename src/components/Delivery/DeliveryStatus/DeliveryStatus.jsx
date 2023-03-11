@@ -20,13 +20,17 @@ const DeliveryStatus = ({searchQuery}) => {
         fetchTtnStatus(ttnSearch).then(res => res.data).then(data => {
             if (data[0] === undefined) {
                 setDeliveryData({ Status: undefined, WarehouseSender: undefined, WarehouseRecipient: undefined})
-                setIsLoading(false);
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 1000);
                 
                 return toast.error("Доставки з таким ТТН не існує");
             }
             if (data[0].Status === 'Номер не найден') {
                 setDeliveryData({ Status: undefined, WarehouseSender: undefined, WarehouseRecipient: undefined})
-                setIsLoading(false);
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 1000);
                 
                 return toast.error("Доставки з таким ТТН не існує");
             }
