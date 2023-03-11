@@ -11,9 +11,9 @@ const BranchSkeleton = () => {
                         <Skeleton count={1} width={220} />
                     </div>
 
-                    <p className={s.branches__index}>
+                    <div className={s.branches__index}>
                         <Skeleton count={1} width={170} />
-                    </p>
+                    </div>
                     
                     <div className={s.branches__address}>
                         <Skeleton count={1} width={250} />

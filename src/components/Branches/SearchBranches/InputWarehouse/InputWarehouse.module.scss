@@ -6,8 +6,9 @@
     color: $greyColor;
     font-weight: 500;
     outline: none;
-    border: none;
     width: 30%;
+    border: none;
+    border-radius: 0;
     border-left: 1px solid $greyColorBorder;
 
     &::placeholder {

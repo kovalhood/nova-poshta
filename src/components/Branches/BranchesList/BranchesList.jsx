@@ -40,9 +40,7 @@ const BranchesList = ({searchQuery}) => {
                                 
                             </div>
                             <p className={s.branches__index}>Індекс { WarehouseIndex }</p>
-                            <div className={s.branches__address}>
-                                <p>{ ShortAddress }</p>
-                            </div>
+                            <p className={s.branches__address}>{ ShortAddress }</p>
                         </div>
 
                         <div className={s.branches__schedule}>
