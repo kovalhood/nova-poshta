@@ -48,6 +48,7 @@
 .branches__title{
     display: flex;
     align-items: flex-end;
+    letter-spacing: $mainLetterSpacing;
 }
 
 .branches__weight,
@@ -58,17 +59,20 @@
 
 .branches__index{
     margin-top: 2px;
+    letter-spacing: $mainLetterSpacing;
 }
 
 .branches__address{
     font-size: 14px;
     margin-top: 10px;
+    letter-spacing: $mainLetterSpacing;
 }
 
 .branches__schedule{
     font-size: 13px;
     margin-top: 10px;
     color: $greyColor;
+    letter-spacing: $mainLetterSpacing;
 }
 
 .branches__schedule_open{
