@@ -1,13 +1,13 @@
 import Section from "../../components/Section/Section";
 import Container from "../../components/Container";
-import BranchesList from "../../components/BranchesList";
+import Branches from "../../components/Branches";
 
-export default function Branches() {
+export default function BranchesPage() {
 
   return (
       <Section>
         <Container>
-          <BranchesList />
+          <Branches />
         </Container>
       </Section>
   );

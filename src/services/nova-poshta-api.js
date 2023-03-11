@@ -29,3 +29,27 @@ export function fetchTtnStatus(ttnQuery) {
 
     return fetchWithErrorHandling(`${BASE_URL}`, searchConfig);
 }
+
+export function fetchBranchesList(cityName, warehouseId) {
+    const searchConfig = {
+        method: 'POST',
+        body: JSON.stringify(
+            {
+                "apiKey": "beb71275173e0ee687757e3ac5981621",
+                "modelName": "Address",
+                "calledMethod": "getWarehouses",
+                "methodProperties": {
+                "CityName" : `${cityName}`,
+                // "CityRef" : "00000000-0000-0000-0000-000000000000",
+                // "Page" : "1",
+                // "Limit" : "50",
+                // "Language" : "UA",
+                // "TypeOfWarehouseRef" : "00000000-0000-0000-0000-000000000000",
+                "WarehouseId" : `${warehouseId}`
+                }
+            }
+        )
+    };
+
+    return fetchWithErrorHandling(`${BASE_URL}`, searchConfig);
+}

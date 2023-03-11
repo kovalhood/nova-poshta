@@ -47,13 +47,13 @@ const SearchForm = (props) => {
         event.preventDefault();
 
         if (form.ttn === '') {
-            return toast.warning('Поле вводу не може бути пустим');
+            return toast.error('Поле вводу не може бути пустим');
         }
         if (form.ttn.length < 14) {
-            return toast.warning('Введено меньше ніж 14 цифр ТТН')
+            return toast.error('Введено меньше ніж 14 цифр ТТН')
         }
         if (form.ttn.length > 14) {
-            return toast.warning('Введено більше ніж 14 цифр ТТН')
+            return toast.error('Введено більше ніж 14 цифр ТТН')
         }
 
         // After success happens this
@@ -66,8 +66,8 @@ const SearchForm = (props) => {
     }
     
     return <form onSubmit={handleSubmit} className={s.search_form}>
-        
-        <InputTtn name={form.ttn} onKeyPress={handleKeyPress} onTtnChange={handleTtnChange} />
+          <InputTtn name={form.ttn} onKeyPress={handleKeyPress} onTtnChange={handleTtnChange} />
+      
         
         {form.ttn === '' ?
             <></>
