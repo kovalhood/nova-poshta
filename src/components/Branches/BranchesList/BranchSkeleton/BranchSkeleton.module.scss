@@ -1,22 +1,5 @@
 @import "../../../../globalStyles/vars";
 
-.branches {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-
-    list-style: none;
-    padding: 0;
-    margin-top: -30px;
-
-    @media screen and (min-width: 768px) {
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-left: -30px;
-    }
-}
-
 .branches__item {
     position: relative;
     margin-top: 30px;
@@ -31,6 +14,9 @@
     }
 
     @media screen and (min-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         margin-left: 30px;
         height: 144.06px;
         flex-basis: calc(100% / 2 - 30px);
@@ -42,57 +28,14 @@
     }
 }
 
-.branches__title {
-    display: flex;
-    align-items: flex-end;
-}
-
-.branches__weight,
-.branches__index {
-    font-size: 14px;
-    color: $greyColor;
-}
-
 .branches__index {
     margin-top: 2px;
 }
 
 .branches__address {
-    font-size: 14px;
     margin-top: 10px;
 }
 
 .branches__schedule {
-    font-size: 13px;
     margin-top: 10px;
-    color: $greyColor;
-}
-
-.branches__schedule_open {
-    font-weight: 500;
-    color: $greenColor;
-}
-
-.branches__schedule_close {
-    font-weight: 500;
-    color: $accentColor;
-}
-
-.branches__map_link {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 20px;
-    color: $greyColorStatus;
-    transition: $mainTransition;
-
-    @media (hover: hover) {
-        &:hover {
-            color: $accentColor;
-        }
-    }
-}
-
-.branches__map_icon {
-    fill: currentColor;
 }

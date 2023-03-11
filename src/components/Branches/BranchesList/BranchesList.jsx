@@ -7,7 +7,7 @@ import s from './BranchesList.module.scss';
 
 const BranchesList = ({searchQuery}) => {
     const [branchesData, setBranchesData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [currentDate, setCurrentdate] = useState(Date.now());
 
     useEffect(() => {
