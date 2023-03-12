@@ -1,0 +1,33 @@
+@import "../../../../globalStyles/vars";
+
+.load_more__button{
+    margin-top: 15px;
+    padding: 10px;
+    height: 44px;
+    width: 100%; 
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 2px;
+    box-shadow: $mainShadow;
+    transition: $mainTransition;
+    color: $whiteColor;
+    background-color: $accentColor;
+
+    cursor: pointer;
+
+    @media screen and (min-width: 480px) {
+        width: 400px;
+    }
+
+    @media screen and (min-width: 768px) {
+        margin-top: 30px;
+        width: 180px;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: $accentColorHover;
+        }
+    }
+}
