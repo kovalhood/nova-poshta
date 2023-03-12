@@ -6,7 +6,7 @@ const upButton = {
     width: 40,
     height: 40,
     bottom: 30,
-    right: 30,
+    right: 15,
     borderRadius: 20,
     backgroundColor: '#fff',
     cursor: 'pointer',
