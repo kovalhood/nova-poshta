@@ -31,7 +31,7 @@ const SearchBranches = (props) => {
     // Avoiding symbols "-", "ʼ", "`", "'" in input fields
     const handleKeyPressCity = (event) => {
         if (event.currentTarget.value === '' || event.currentTarget.value.length < 4) {
-            ["-", "ʼ", "`", "'"].includes(event.key) && event.preventDefault();
+            ["-", "ʼ", "`", "'", " "].includes(event.key) && event.preventDefault();
         }
     }
 
