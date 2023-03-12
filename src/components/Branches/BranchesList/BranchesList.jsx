@@ -14,7 +14,7 @@ const BranchesList = ({searchQuery}) => {
     const [city, setCity] = useState('');
     const [warehouse, setWarehouse] = useState('');
     const [results, setResults] = useState('');
-
+    
     const handleLoadMore = () => {
         setPage(prevState => prevState + 1);
     }
@@ -33,7 +33,6 @@ const BranchesList = ({searchQuery}) => {
         setStatus('pending');
 
         fetchBranchesList(searchQuery.city, searchQuery.warehouse, page).then(res => res.data).then(data => {
-            console.log(data);
             setResults(data.length);
 
             if (searchQuery.warehouse !== '' && page > 1) {

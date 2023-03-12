@@ -1,7 +1,7 @@
 import Skeleton from 'react-loading-skeleton';
 import s from './BranchSkeleton.module.scss';
 
-const BranchSkeleton = ({amountOfCards}) => {
+const BranchSkeleton = ({amountOfCards, ref}) => {
 
     return <>
         {
