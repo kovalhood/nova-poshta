@@ -34,7 +34,7 @@ const BranchesList = ({searchQuery}) => {
 
         fetchBranchesList(searchQuery.city, searchQuery.warehouse, page).then(res => res.data).then(data => {
             setResults(data.length);
-
+            console.log(data);
             if (searchQuery.warehouse !== '' && page > 1) {
                 setPage(1);
                 return;
@@ -161,6 +161,16 @@ const BranchesList = ({searchQuery}) => {
 
                             {Schedule.Sunday === '00:01-23:59' && Schedule.Monday !== '00:01-23:59'
                                 ? <p><span className={s.branches__schedule_open}>Відчинено</span>&nbsp;до {Schedule.Sunday.slice(6, 11)}</p>
+                                : <></>
+                            }
+
+                            {new Date(currentDate).getDay() === 0 && Schedule.Sunday === "-"
+                                ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;чекаємо завтра з {Schedule.Monday.slice(0, 5)}</p>
+                                : <></>
+                            }
+                            
+                            {new Date(currentDate).getDay() === 1 && Schedule.Sunday === "-"
+                                ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;відкриється в {Schedule.Monday.slice(0, 5)}</p>
                                 : <></>
                             }
                         </div>
@@ -303,6 +313,16 @@ const BranchesList = ({searchQuery}) => {
                                     ? <p><span className={s.branches__schedule_open}>Відчинено</span>&nbsp;до {Schedule.Sunday.slice(6, 11)}</p>
                                     : <></>
                                 }
+
+                                {new Date(currentDate).getDay() === 0 && Schedule.Sunday === "-"
+                                    ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;чекаємо завтра з {Schedule.Monday.slice(0, 5)}</p>
+                                    : <></>
+                                }
+
+                                {new Date(currentDate).getDay() === 1 && Schedule.Sunday === "-"
+                                    ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;відкриється в {Schedule.Monday.slice(0, 5)}</p>
+                                    : <></>
+                                }
                             </div>
 
                             {/* Link to Google Maps with address of branch */}
@@ -422,6 +442,16 @@ const BranchesList = ({searchQuery}) => {
 
                                 {Schedule.Sunday === '00:01-23:59' && Schedule.Monday !== '00:01-23:59'
                                     ? <p><span className={s.branches__schedule_open}>Відчинено</span>&nbsp;до {Schedule.Sunday.slice(6, 11)}</p>
+                                    : <></>
+                                }
+
+                                {new Date(currentDate).getDay() === 0 && Schedule.Sunday === "-"
+                                    ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;чекаємо завтра з {Schedule.Monday.slice(0, 5)}</p>
+                                    : <></>
+                                }
+
+                                {new Date(currentDate).getDay() === 1 && Schedule.Sunday === "-"
+                                    ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;відкриється в {Schedule.Monday.slice(0, 5)}</p>
                                     : <></>
                                 }
                             </div>
