@@ -10,5 +10,5 @@ export default function TtnPage() {
                 <Delivery />
             </Container>
         </Section>
-  );
+    );
 };

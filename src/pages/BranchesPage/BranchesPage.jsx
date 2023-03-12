@@ -4,11 +4,11 @@ import Branches from "../../components/Branches";
 
 export default function BranchesPage() {
 
-  return (
-      <Section>
-        <Container>
-          <Branches />
-        </Container>
-      </Section>
-  );
+    return (
+        <Section>
+            <Container>
+                <Branches />
+            </Container>
+        </Section>
+    );
 };

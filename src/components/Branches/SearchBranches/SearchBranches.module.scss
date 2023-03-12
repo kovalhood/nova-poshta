@@ -15,6 +15,16 @@
     }
 }
 
+.required_mark{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: $accentColor;
+}
+
 .clear_button {
     position: absolute;
     right: 40px;

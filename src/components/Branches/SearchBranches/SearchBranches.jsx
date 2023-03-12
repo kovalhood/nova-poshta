@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { getSearches } from '../../../redux/searches/searches-selectors';
+import { useState } from 'react';
 import InputCity from './InputCity/InputCity';
 import InputWarehouse from './InputWarehouse';
 import sprite from '../../../images/icons.svg';
@@ -10,20 +8,62 @@ import s from './SearchBranches.module.scss';
 const SearchBranches = (props) => {
     const [form, setForm] = useState({ city: '' , warehouse: ''});
 
-    // Creating handler for our field
-    const handleFormChange = event => {
-        const { name, value } = event.currentTarget;
-        setForm(prevForm => ({ ...prevForm, [name]: value }));
+    // Creating handler for our city input field
+    const handleFormChangeCity = event => {
+        // Allowing only cyrillic symbols to be in the city input (and some special symbols)
+        const gerex = /^[А-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ(\-)(\ )\u0027\u0060\u0022\u201C\u201D\u2018\u2019\u02BC]+$/;
+
+        if(event.target.value.match(gerex) != null || event.target.value === ''){
+            const { name, value } = event.currentTarget;
+            setForm(prevForm => ({ ...prevForm, [name]: value }));
+        }
+    }
+
+    // Creating handler for our warehouse input field
+    const handleFormChangeWarehouse = event => {
+        // Allowing only numbers to be pasted
+        if(event.target.value.match(/^[0-9]*$/) != null){
+            const { name, value } = event.currentTarget;
+            setForm(prevForm => ({ ...prevForm, [name]: value }));
+        }
+    }
+
+    // Avoiding symbols "-", "ʼ", "`", "'" in input fields
+    const handleKeyPressCity = (event) => {
+        if (event.currentTarget.value === '' || event.currentTarget.value.length < 4) {
+            ["-", "ʼ", "`", "'"].includes(event.key) && event.preventDefault();
+        }
     }
 
     // Avoiding symbols "e", "E", "+", "-", ".", "," in input fields
-    const handleKeyPress = (event) => {
+    const handleKeyPressWarehouse = (event) => {
+        if (event.currentTarget.value === '') {
+            // Disallowing 0 to start the number of warehouse
+            ['0'].includes(event.key) && event.preventDefault();
+        }
+
+        if (event.currentTarget.value.length >= 6 ) {
+            ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(event.key) && event.preventDefault();
+        }
+        
         ["e", "E", "+", "-", ".", ","].includes(event.key) && event.preventDefault();
     }
 
-        // Creating submit handler
+    // Creating submit handler
     const handleSubmit = event => {
         event.preventDefault();
+
+        if (form.city === '') {
+            return toast.error('Поле вводу назви міста не може бути пустим');
+        }
+
+        if (form.city.length < 3 ) {
+            return toast.error('Назва міста не може містити менше 2 літер');
+        }
+
+        if (form.city.length > 20 ) {
+            return toast.error('Введена назва міста є занадто довгою');
+        }
 
         // After success happens this
         // handleSearchInfo();        
@@ -35,8 +75,14 @@ const SearchBranches = (props) => {
     }
 
     return <form onSubmit={handleSubmit} className={s.search_form}>
-        <InputCity name={form.city} onCityChange={handleFormChange} />
-        <InputWarehouse name={form.warehouse} onKeyPress={handleKeyPress} onWarehouseChange={handleFormChange}/>
+        <InputCity name={form.city} onKeyPress={handleKeyPressCity} onCityChange={handleFormChangeCity} />
+        <InputWarehouse name={form.warehouse} onKeyPress={handleKeyPressWarehouse} onWarehouseChange={handleFormChangeWarehouse} />
+        
+        {form.city === '' ?
+            <span className={s.required_mark}></span>
+            :
+            <></>
+        }
         
         {form.city === '' && form.warehouse === '' ?
             <></>

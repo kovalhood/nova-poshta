@@ -44,7 +44,6 @@ const Delivery = () => {
     }, [searches]);
 
     return <>
-        {/* <p>20400322248632</p> */}
         <SearchForm onQuerySearch={handleSearchQuery} historyQuery={ searchQuery } />
         <div className={s.info_wrapper}>
             
