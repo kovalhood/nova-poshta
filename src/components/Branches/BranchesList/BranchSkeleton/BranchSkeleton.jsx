@@ -1,11 +1,11 @@
 import Skeleton from 'react-loading-skeleton';
 import s from './BranchSkeleton.module.scss';
 
-const BranchSkeleton = () => {
+const BranchSkeleton = ({amountOfCards}) => {
 
     return <>
         {
-            [1, 2, 3, 4, 5, 6].map((item) => (
+            amountOfCards.map((item) => (
                 <li key={item} className={s.branches__item}>
                     <div className={s.branches__title}>
                         <Skeleton count={1} width={220} />
