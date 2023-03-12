@@ -1,8 +1,6 @@
 const BASE_URL = 'https://api.novaposhta.ua/v2.0/json/';
 
 async function fetchWithErrorHandling(url = '', config = {}) {
-    // console.log(url);
-    // console.log(config);
     const response = await fetch(url, config);
     
     return response.ok
@@ -40,11 +38,8 @@ export function fetchBranchesList(cityName, warehouseId, page) {
                 "calledMethod": "getWarehouses",
                 "methodProperties": {
                 "CityName" : `${cityName}`,
-                // "CityRef" : "00000000-0000-0000-0000-000000000000",
                 "Page" : `${page}`,
                 "Limit" : "60",
-                // "Language" : "UA",
-                // "TypeOfWarehouseRef" : "00000000-0000-0000-0000-000000000000",
                 "WarehouseId" : `${warehouseId}`
                 }
             }
