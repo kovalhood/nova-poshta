@@ -120,6 +120,11 @@ const BranchesList = ({searchQuery}) => {
                                     ? <p className={s.branches__schedule_open}>Відчинено цілодобово</p>
                                     : <></>
                                 }
+
+                                {Schedule.Sunday === '00:01-23:59' && Schedule.Monday !== '00:01-23:59'
+                                    ? <p><span className={s.branches__schedule_open}>Відчинено</span>&nbsp;до {Schedule.Sunday.slice(6, 11)}</p>
+                                    : <></>
+                                }
                             </div>
 
                             {/* Link to Google Maps with address of branch */}
