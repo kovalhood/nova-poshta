@@ -28,11 +28,14 @@ const SearchBranches = (props) => {
         }
     }
 
-    // Avoiding symbols "-", "ʼ", "`", "'" in input fields
+    // Avoiding symbols "-", "ʼ", "`", "'", "ы", "ъ", "э", "ё" in input fields
     const handleKeyPressCity = (event) => {
         if (event.currentTarget.value === '' || event.currentTarget.value.length < 4) {
             ["-", "ʼ", "`", "'", " "].includes(event.key) && event.preventDefault();
         }
+
+        // Prevent russian language symbols 
+        ["ы", "ъ", "э", "ё"].includes(event.key) && event.preventDefault();
     }
 
     // Avoiding symbols "e", "E", "+", "-", ".", "," in input fields
