@@ -8,11 +8,16 @@ import s from './SearchForm.module.scss';
 
 const SearchForm = (props) => {
     const [form, setForm] = useState({ ttn: '' });
-    
+
     const searches = useSelector(getSearches);
 
     // Creating handler for our TTN field
     const handleTtnChange = event => {
+        if (event.target.value.length > 14) {
+            toast.error('В поле вводу ТТН не можливо ввести більше 14 цифр');
+            return;
+        }
+
         // Allowing only numbers to be pasted
         if(event.target.value.match(/^[0-9]*$/) != null){
             const { name, value } = event.currentTarget;
@@ -22,13 +27,10 @@ const SearchForm = (props) => {
 
     // Avoiding symbols "e", "E", "+", "-", ".", "," in input fields
     const handleKeyPress = (event) => {
-        if (event.currentTarget.value === '') {
-            // Disallowing 0 to start the number of ttn
-            ['0'].includes(event.key) && event.preventDefault();
-        }
-
-        if (event.currentTarget.value.length >= 14 ) {
-            ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(event.key) && event.preventDefault();
+        // Disallowing 0, 3, 4, 6, 7, 8, 9 to start the number of ttn
+        if (event.currentTarget.value === '' && ['0', '3', '4', '6', '7', '8', '9'].includes(event.key)) {
+            ['0', '3', '4', '6', '7', '8', '9'].includes(event.key) && event.preventDefault();
+            toast.error('Номер ТТН повинен починатися з цифри 1, 2 або з 5');
         }
         
         ["e", "E", "+", "-", ".", ","].includes(event.key) && event.preventDefault();

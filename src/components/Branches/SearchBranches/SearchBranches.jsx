@@ -21,6 +21,11 @@ const SearchBranches = (props) => {
 
     // Creating handler for our warehouse input field
     const handleFormChangeWarehouse = event => {
+        if (event.target.value.length > 5) {
+            toast.error('В поле вводу номеру відділення не можливо ввести більше 5 цифр');
+            return;
+        }
+
         // Allowing only numbers to be pasted
         if(event.target.value.match(/^[0-9]*$/) != null){
             const { name, value } = event.currentTarget;
@@ -41,13 +46,10 @@ const SearchBranches = (props) => {
 
     // Avoiding symbols "e", "E", "+", "-", ".", "," in input fields
     const handleKeyPressWarehouse = (event) => {
-        if (event.currentTarget.value === '') {
+        if (event.currentTarget.value === '' && ['0'].includes(event.key)) {
             // Disallowing 0 to start the number of warehouse
             ['0'].includes(event.key) && event.preventDefault();
-        }
-
-        if (event.currentTarget.value.length >= 6 ) {
-            ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(event.key) && event.preventDefault();
+            toast.error('Номер відділення не може починатись з 0');
         }
         
         ["e", "E", "+", "-", ".", ","].includes(event.key) && event.preventDefault();
