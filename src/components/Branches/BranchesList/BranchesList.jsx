@@ -34,7 +34,7 @@ const BranchesList = ({searchQuery}) => {
 
         fetchBranchesList(searchQuery.city.trim(), searchQuery.warehouse, page).then(res => res.data).then(data => {
             setResults(data.length);
-            console.log(data)
+            
             if (searchQuery.warehouse !== '' && page > 1) {
                 setPage(1);
                 return;
@@ -166,7 +166,7 @@ const BranchesList = ({searchQuery}) => {
                                 : <></>
                             }
 
-                            {Schedule.Sunday === '00:01-23:59' && Schedule.Monday !== '00:01-23:59'
+                            {new Date(currentDate).getDay() === 0 && Schedule.Sunday === '00:01-23:59' && Schedule.Monday !== '00:01-23:59'
                                 ? <p><span className={s.branches__schedule_open}>Відчинено</span>&nbsp;до {Schedule.Sunday.slice(6, 11)}</p>
                                 : <></>
                             }
@@ -311,7 +311,7 @@ const BranchesList = ({searchQuery}) => {
                                     : <></>
                                 }
 
-                                {Schedule.Sunday === '00:01-23:59' && Schedule.Monday !== '00:01-23:59'
+                                {new Date(currentDate).getDay() === 0 && Schedule.Sunday === '00:01-23:59' && Schedule.Monday !== '00:01-23:59'
                                     ? <p><span className={s.branches__schedule_open}>Відчинено</span>&nbsp;до {Schedule.Sunday.slice(6, 11)}</p>
                                     : <></>
                                 }
@@ -437,7 +437,7 @@ const BranchesList = ({searchQuery}) => {
                                     : <></>
                                 }
 
-                                {Schedule.Sunday === '00:01-23:59' && Schedule.Monday !== '00:01-23:59'
+                                {new Date(currentDate).getDay() === 0 && Schedule.Sunday === '00:01-23:59' && Schedule.Monday !== '00:01-23:59'
                                     ? <p><span className={s.branches__schedule_open}>Відчинено</span>&nbsp;до {Schedule.Sunday.slice(6, 11)}</p>
                                     : <></>
                                 }
