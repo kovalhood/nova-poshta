@@ -15,6 +15,7 @@
 
     @media screen and (min-width: 768px) {
         width: 300px;
+        max-height: 320px;
         margin-top: 0;
     }
 }
@@ -60,6 +61,10 @@
     padding: 7px 0 0 0;
     margin: 0 0 0 20px;
     list-style: none;
+
+    @media screen and (min-width: 768px) {
+        max-height: 245px;
+    }
 }
 
 .history__item{
