@@ -30,12 +30,16 @@ const SearchBranches = (props) => {
 
     // Avoiding symbols "-", "ʼ", "`", "'", "ы", "ъ", "э", "ё" in input fields
     const handleKeyPressCity = (event) => {
+        // Prevent russian language symbols 
+        // (have to write it as a rule, because otherwise on mobile devices it allows to write this symbols at the beginning of the string )
+        if (event.currentTarget.value === '' || event.currentTarget.value.length > 0) {
+            ["ы", "ъ", "э", "ё"].includes(event.key) && event.preventDefault();
+        }
+
+        // Prevent this symbols to be at the start of sting and before 4 symbols will be written
         if (event.currentTarget.value === '' || event.currentTarget.value.length < 4) {
             ["-", "ʼ", "`", "'", " "].includes(event.key) && event.preventDefault();
         }
-
-        // Prevent russian language symbols 
-        ["ы", "ъ", "э", "ё"].includes(event.key) && event.preventDefault();
     }
 
     // Avoiding symbols "e", "E", "+", "-", ".", "," in input fields
