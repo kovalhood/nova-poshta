@@ -73,7 +73,7 @@ const DeliveryStatus = ({searchQuery}) => {
             <div>
                 <h3 className={s.status__title}>Відправник:</h3>
                 {deliveryData.DateCreated === '' || deliveryData.DateCreated === undefined
-                    ? <p className={s.status__date}>Час створення: не існує</p>
+                    ? <p className={s.status__date}>Час створення: відсутній</p>
                     : <p className={s.status__date}>Час створення: {formattingSenderDate(deliveryData.DateCreated)}</p> }
                 
                 {deliveryData.WarehouseSender === '' || deliveryData.WarehouseSender === undefined
@@ -97,7 +97,7 @@ const DeliveryStatus = ({searchQuery}) => {
             <div>
                 <h3 className={s.status__title}>Одержувач:</h3>
                 {deliveryData.AdjustedDate === undefined || deliveryData.ActualDeliveryDate === undefined
-                    ? <p className={s.status__date}>Час прибуття: не існує</p>
+                    ? <p className={s.status__date}>Час прибуття: відсутній</p>
                     : <></>}
                 
                 {deliveryData.AdjustedDate === '' && deliveryData.ActualDeliveryDate === '' && deliveryData.AdjustedDate !== undefined
