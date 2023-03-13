@@ -13,8 +13,9 @@ const StatusSkeleton = () => {
             </div>
             <div>
                 <h3 className={s.status__title}>Статус:</h3>
-                <Skeleton count={1} width={220} />
                 <Skeleton count={1} width={170} />
+                <Skeleton count={1} width={220} />
+                <Skeleton count={1} width={150} />
             </div>
         </div>
         <div className={s.status__second_item}>
@@ -25,8 +26,9 @@ const StatusSkeleton = () => {
             </div>
             <div>
                 <h3 className={s.status__title}>Відправник:</h3>
-                <Skeleton count={1} width={220} />
                 <Skeleton count={1} width={170} />
+                <Skeleton count={1} width={220} />
+                <Skeleton count={1} width={150} />
             </div>
             
         </div>
@@ -43,8 +45,9 @@ const StatusSkeleton = () => {
             </div>
             <div>
                 <h3 className={s.status__title}>Одержувач:</h3>
-                <Skeleton count={1} width={220} />
                 <Skeleton count={1} width={170} />
+                <Skeleton count={1} width={220} />
+                <Skeleton count={1} width={150} />
             </div>
         </div>
     </>
