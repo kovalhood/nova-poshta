@@ -96,3 +96,40 @@
 .search_button__icon {
     fill: currentColor;
 }
+
+.cities_list{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 20px;
+    max-height: 158px;
+    padding: 5px 15px;
+    overflow: scroll;
+    color: black;
+    background-color: $whiteColor;
+    box-shadow: $mainShadow;
+    z-index: 10;
+
+    list-style: none;
+    margin: 0;
+
+
+    @media screen and (min-width: 768px) {
+        max-height: 130px;
+    }
+}
+
+.cities_list__item{
+    padding: 5px;
+    cursor: pointer;
+    transition: $mainTransition;
+
+    @media (hover: hover) {
+        &:hover {
+            color: $accentColor;
+        }
+    }
+}

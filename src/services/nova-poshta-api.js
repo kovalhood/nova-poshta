@@ -28,7 +28,7 @@ export function fetchTtnStatus(ttnQuery) {
     return fetchWithErrorHandling(`${BASE_URL}`, searchConfig);
 }
 
-export function fetchBranchesList(cityName, warehouseId, page) {
+export function fetchBranchesList(cityName, warehouseId, page, cityRef) {
     const searchConfig = {
         method: 'POST',
         body: JSON.stringify(
@@ -37,10 +37,31 @@ export function fetchBranchesList(cityName, warehouseId, page) {
                 "modelName": "Address",
                 "calledMethod": "getWarehouses",
                 "methodProperties": {
-                "CityName" : `${cityName}`,
+                "CityName": `${cityName}`,
+                "CityRef" : `${cityRef}`,
                 "Page" : `${page}`,
                 "Limit" : "60",
                 "WarehouseId" : `${warehouseId}`
+                }
+            }
+        )
+    };
+
+    return fetchWithErrorHandling(`${BASE_URL}`, searchConfig);
+}
+
+export function fetchCitiesList(cityName) {
+    const searchConfig = {
+        method: 'POST',
+        body: JSON.stringify(
+            {
+                "apiKey": "beb71275173e0ee687757e3ac5981621",
+                "modelName": "Address",
+                "calledMethod": "searchSettlements",
+                "methodProperties": {
+                "CityName" : `${cityName}`,
+                "Limit" : "20",
+                "Page" : "1"
                 }
             }
         )

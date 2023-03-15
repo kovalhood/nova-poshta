@@ -32,9 +32,9 @@ const BranchesList = ({searchQuery}) => {
         
         setStatus('pending');
 
-        fetchBranchesList(searchQuery.city.trim(), searchQuery.warehouse, page).then(res => res.data).then(data => {
+        fetchBranchesList(searchQuery.city.trim(), searchQuery.warehouse, page, searchQuery.cityRef).then(res => res.data).then(data => {
             setResults(data.length);
-
+            
             if (searchQuery.warehouse !== '' && page > 1) {
                 setPage(1);
                 return;
@@ -51,7 +51,7 @@ const BranchesList = ({searchQuery}) => {
                 setBranchesData([]);
                 setStatus('resolved');
                 setPage(1);
-                return toast.error('В вашому місті ще немає Нової Пошти, або назва міста введена з помилкою');
+                return toast.error('В вашому місті ще немає Нової Пошти');
             }
 
             if (page === 1) {
@@ -177,8 +177,18 @@ const BranchesList = ({searchQuery}) => {
                                 : <></>
                             }
 
-                            {new Date(currentDate).getDay() !== 0 && Schedule.Sunday === "-"
+                            {new Date(currentDate).getDay() !== 0 && Schedule.Sunday === "-" && Schedule.Tuesday === '00:01-23:59'
                                 ? <p className={s.branches__schedule_open}>Відчинено цілодобово</p>
+                                : <></>
+                            }
+
+                            {new Date(currentDate).getDay() === 0 && Schedule.Sunday === "-" && Schedule.Monday === "-" && Schedule.Tuesday !== "-"
+                                ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;Чекаємо післязавтра з {Schedule.Tuesday.slice(0, 5)}</p>
+                                : <></>
+                            }
+
+                            {new Date(currentDate).getDay() === 1 && Schedule.Sunday === "-" && Schedule.Monday === "-" && Schedule.Tuesday !== "-"
+                                ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;Чекаємо завтра з {Schedule.Tuesday.slice(0, 5)}</p>
                                 : <></>
                             }
                         </div>
@@ -327,8 +337,18 @@ const BranchesList = ({searchQuery}) => {
                                     : <></>
                                 }
 
-                                {new Date(currentDate).getDay() !== 0 && Schedule.Sunday === "-"
+                                {new Date(currentDate).getDay() !== 0 && Schedule.Sunday === "-" && Schedule.Tuesday === '00:01-23:59'
                                     ? <p className={s.branches__schedule_open}>Відчинено цілодобово</p>
+                                    : <></>
+                                }
+
+                                {new Date(currentDate).getDay() === 0 && Schedule.Sunday === "-" && Schedule.Monday === "-" && Schedule.Tuesday !== "-"
+                                    ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;Чекаємо післязавтра з {Schedule.Tuesday.slice(0, 5)}</p>
+                                    : <></>
+                                }
+
+                                {new Date(currentDate).getDay() === 1 && Schedule.Sunday === "-" && Schedule.Monday === "-" && Schedule.Tuesday !== "-"
+                                    ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;Чекаємо завтра з {Schedule.Tuesday.slice(0, 5)}</p>
                                     : <></>
                                 }
                             </div>
@@ -460,6 +480,21 @@ const BranchesList = ({searchQuery}) => {
 
                                 {new Date(currentDate).getDay() !== 0 && Schedule.Sunday === "-"
                                     ? <p className={s.branches__schedule_open}>Відчинено цілодобово</p>
+                                    : <></>
+                                }
+
+                                {new Date(currentDate).getDay() !== 0 && Schedule.Sunday === "-" && Schedule.Tuesday === '00:01-23:59'
+                                    ? <p className={s.branches__schedule_open}>Відчинено цілодобово</p>
+                                    : <></>
+                                }
+
+                                {new Date(currentDate).getDay() === 0 && Schedule.Sunday === "-" && Schedule.Monday === "-" && Schedule.Tuesday !== "-"
+                                    ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;Чекаємо післязавтра з {Schedule.Tuesday.slice(0, 5)}</p>
+                                    : <></>
+                                }
+
+                                {new Date(currentDate).getDay() === 1 && Schedule.Sunday === "-" && Schedule.Monday === "-" && Schedule.Tuesday !== "-"
+                                    ? <p><span className={s.branches__schedule_close}>Зачинено</span>&nbsp;Чекаємо завтра з {Schedule.Tuesday.slice(0, 5)}</p>
                                     : <></>
                                 }
                             </div>
