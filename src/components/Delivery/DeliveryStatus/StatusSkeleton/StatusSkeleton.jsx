@@ -1,9 +1,8 @@
-import sprite from '../../../../images/icons.svg';
 import Skeleton from 'react-loading-skeleton';
+import sprite from '../../../../images/icons.svg';
 import s from './StatusSkeleton.module.scss';
 
 const StatusSkeleton = () => {
-
     return <>
             <div className={s.status__first_item}>
             <div className={s.status__icon_wrapper}>

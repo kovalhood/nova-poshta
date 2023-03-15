@@ -1,11 +1,11 @@
-import Header from "./components/Header";
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Wrapper from "./components/Wrapper";
-import TtnPage from "./pages/TtnPage";
-import BranchesPage from "./pages/BranchesPage";
 import ScrollToTop from 'react-scroll-up';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from "./components/Header";
+import Wrapper from "./components/Wrapper";
+import TtnPage from "./pages/TtnPage";
+import BranchesPage from "./pages/BranchesPage";
 import styles from './services/styles';
 import sprite from './images/icons.svg';
 
@@ -15,19 +15,10 @@ function App() {
       <Header />
       
       <Routes>
-        <Route path="/"
-          element={
-            <Wrapper>
-              <TtnPage />
-            </Wrapper>}
-        />
-            
-        <Route path="/branches"
-          element={
-            <Wrapper>
-              <BranchesPage />
-            </Wrapper>}
-        />
+        <Route element={<Wrapper/>}>
+          <Route path="/" element={<TtnPage />}/>
+          <Route path="/branches" element={<BranchesPage />}/>
+        </Route>
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

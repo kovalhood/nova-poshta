@@ -1,11 +1,7 @@
-import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
 
-export default function Wrapper({ children }) {
+export default function Wrapper() {
     return <main>
-        {children}
+        <Outlet/>
     </main>
-}
-
-Wrapper.propTypes = {
-    children: PropTypes.node,
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import SearchBranches from "./SearchBranches/SearchBranches";
 import BranchesList from './BranchesList';
-import { toast } from 'react-toastify';
 
 const Branches = () => {
     const [searchQuery, setSearchQuery] = useState({ city: '', warehouse: '', cityRef: '' });

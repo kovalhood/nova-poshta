@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import 'react-loading-skeleton/dist/skeleton.css'
 import { getSearches } from '../../redux/searches/searches-selectors';
 import actions from '../../redux/searches/searches-actions';
 import SearchForm from "./SearchForm/SearchForm";
 import DeliveryStatus from './DeliveryStatus/DeliveryStatus';
 import SearchHistory from './SearchHistory';
-import { toast } from 'react-toastify';
-import 'react-loading-skeleton/dist/skeleton.css'
 import s from './Delivery.module.scss';
 
 const Delivery = () => {
