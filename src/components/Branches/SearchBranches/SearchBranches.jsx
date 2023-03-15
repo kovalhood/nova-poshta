@@ -3,10 +3,13 @@ import InputCity from './InputCity/InputCity';
 import InputWarehouse from './InputWarehouse';
 import sprite from '../../../images/icons.svg';
 import { toast } from 'react-toastify';
+import { fetchCitiesList } from '../../../services/nova-poshta-api';
+import { nanoid } from 'nanoid'
 import s from './SearchBranches.module.scss';
 
 const SearchBranches = (props) => {
-    const [form, setForm] = useState({ city: '' , warehouse: ''});
+    const [form, setForm] = useState({ city: '', warehouse: '', cityRef: '' });
+    const [citiesList, setCitiesList] = useState([]);
 
     // Creating handler for our city input field
     const handleFormChangeCity = event => {
@@ -14,9 +17,23 @@ const SearchBranches = (props) => {
         const gerex = /^[А-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ(\-)(\ )\u0027\u0060\u0022\u201C\u201D\u2018\u2019\u02BC]+$/;
 
         if(event.target.value.match(gerex) != null || event.target.value === ''){
+            // Fetching dropdown menu with cities
+            fetchCitiesList(event.target.value).then(res => res.data).then(data => {
+                if (data[0].Addresses !== []) {
+                    setCitiesList(data[0].Addresses);
+                }
+
+                if (data[0].Addresses === []) {
+                    setCitiesList([]);
+                }
+                
+            });
+            
             const { name, value } = event.currentTarget;
             setForm(prevForm => ({ ...prevForm, [name]: value }));
         }
+
+        setForm(prevForm => ({ ...prevForm, cityRef: '' }));
     }
 
     // Creating handler for our warehouse input field
@@ -76,22 +93,41 @@ const SearchBranches = (props) => {
             return toast.error('Назва міста не може містити менше 3 літер');
         }
 
-        if (form.city.length > 20 ) {
+        if (form.city.length > 40 ) {
             return toast.error('Введена назва міста є занадто довгою');
         }
 
         // After success happens this
         // handleSearchInfo();        
         props.onQuerySearch(form);
+        setCitiesList([]);
     };
 
+    const onCityClick = (cityName, cityNameRef) => {
+        setForm({ city: `${cityName}`, warehouse: '', cityRef: `${cityNameRef}` });
+        setCitiesList([]);
+    }
+
     const handleClearInput = event => {
-        return setForm({ city: '' , warehouse: ''});
+        return setForm({ city: '' , warehouse: '', cityRef: ''});
     }
 
     return <form onSubmit={handleSubmit} className={s.search_form}>
         <InputCity name={form.city} onKeyPress={handleKeyPressCity} onCityChange={handleFormChangeCity} />
         <InputWarehouse name={form.warehouse} onKeyPress={handleKeyPressWarehouse} onWarehouseChange={handleFormChangeWarehouse} />
+
+        {/* Dropdown menu with cities */}
+        {(citiesList.length !== 0) ?
+            <ul className={s.cities_list}>
+                {citiesList.map(({ Present, MainDescription, DeliveryCity }) => (
+                    <li key={nanoid(6)} className={s.cities_list__item} onClick={() => onCityClick(MainDescription, DeliveryCity)}>
+                        <p>{Present}</p>
+                    </li>
+                ))}
+            </ul>
+            :
+            <></>
+        }
         
         {form.city === '' ?
             <span className={s.required_mark}></span>
@@ -99,7 +135,7 @@ const SearchBranches = (props) => {
             <></>
         }
         
-        {form.city === '' && form.warehouse === '' ?
+        {form.city === '' && form.warehouse === '' && form.cityRef === '' ?
             <></>
             :
             <button type='button' className={s.clear_button} onClick={handleClearInput}>
