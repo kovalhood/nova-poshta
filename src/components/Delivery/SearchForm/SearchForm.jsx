@@ -42,14 +42,6 @@ const SearchForm = (props) => {
         ["e", "E", "+", "-", ".", ","].includes(event.key) && event.preventDefault();
     }
 
-    // Automatically search last query from LocalStorage after refresh of the page
-    // useEffect(() => {
-    //     if (searches.length!==0) {
-    //         setForm({ ttn: searches[0].number });
-    //         props.onQuerySearch({ ttn: searches[0].number });
-    //     }
-    // }, []);
-
     useEffect(() => {
         if (form.ttn !== props.historyQuery.ttn) {
             setForm(props.historyQuery);
@@ -57,7 +49,7 @@ const SearchForm = (props) => {
     }, [props.historyQuery]);
 
     useEffect(() => {
-        if (searches.length===0) {
+        if (searches.length === 0) {
             setForm({ ttn: '' });
         };
     }, [searches]);
