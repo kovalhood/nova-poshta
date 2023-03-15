@@ -54,10 +54,12 @@ const DeliveryStatus = ({searchQuery}) => {
             </div>
             <div>
                 <h3 className={s.status__title}>Статус:</h3>   
+                {/* Date and time of taking delivery */}
                 {deliveryData.RecipientDateTime === '' || deliveryData.RecipientDateTime === undefined
                     ? <p className={s.status__date}>Час отримання: відсутній</p>
                     : <p className={s.status__date}>Час отримання: {formattingStatusDate(deliveryData.RecipientDateTime)}</p> }    
                 
+                {/* Status of TTN */}
                 {deliveryData.Status === undefined || deliveryData.Status === 'Номер не найден'
                     ? <p className={s.status__state}>Номер не знайдено</p>
                     : <p className={s.status__state}>{deliveryData.Status}</p>
@@ -72,10 +74,12 @@ const DeliveryStatus = ({searchQuery}) => {
             </div>
             <div>
                 <h3 className={s.status__title}>Відправник:</h3>
+                {/* Date and time of delivery creation */}
                 {deliveryData.DateCreated === '' || deliveryData.DateCreated === undefined
                     ? <p className={s.status__date}>Час створення: відсутній</p>
                     : <p className={s.status__date}>Час створення: {formattingSenderDate(deliveryData.DateCreated)}</p> }
                 
+                {/* Address of sender */}
                 {deliveryData.WarehouseSender === '' || deliveryData.WarehouseSender === undefined
                     ? <p className={s.status__state}>Інформація про відділення відсутня</p>
                     : <p className={s.status__state}>{ deliveryData.CitySender}, {deliveryData.WarehouseSender}</p>
@@ -96,26 +100,24 @@ const DeliveryStatus = ({searchQuery}) => {
             </div>
             <div>
                 <h3 className={s.status__title}>Одержувач:</h3>
+                {/* Date and time of delivery arrival */}
                 {deliveryData.AdjustedDate === undefined || deliveryData.ActualDeliveryDate === undefined
                     ? <p className={s.status__date}>Час прибуття: відсутній</p>
                     : <></>}
-                
                 {deliveryData.AdjustedDate === '' && deliveryData.ActualDeliveryDate === '' && deliveryData.AdjustedDate !== undefined
-                    ? <p className={s.status__date}>Орієнтовний час прибуття: не розраховано</p>
+                    ? <p className={s.status__date}>Орієнтовний час прибуття: відсутній</p>
                     : <></>}
-                
                 {deliveryData.AdjustedDate !== '' && deliveryData.ActualDeliveryDate === '' && deliveryData.AdjustedDate !== undefined
                     ? <p className={s.status__date}>Орієнтовний час прибуття: {formattingRecipientDate(deliveryData.AdjustedDate)}</p>
                     : <></>}
-                        
                 {deliveryData.AdjustedDate === '' && deliveryData.ActualDeliveryDate !== '' && deliveryData.ActualDeliveryDate !== undefined
                     ? <p className={s.status__date}>Час прибуття: {formattingRecipientDate(deliveryData.ActualDeliveryDate)}</p>
                     : <></>}
-                        
                 {deliveryData.AdjustedDate !== '' && deliveryData.ActualDeliveryDate !== '' && deliveryData.ActualDeliveryDate !== undefined
                     ? <p className={s.status__date}>Час прибуття: {formattingRecipientDate(deliveryData.ActualDeliveryDate)}</p>
                     : <></> }
                 
+                {/* Address of recipient */}
                 {deliveryData.WarehouseRecipient === '' || deliveryData.WarehouseSender === undefined
                     ? <p className={s.status__state}>Інформація про відділення відсутня</p>
                     : <p className={s.status__state}>{ deliveryData.CityRecipient}, {deliveryData.WarehouseRecipient}</p>
