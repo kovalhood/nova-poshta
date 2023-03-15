@@ -22,6 +22,9 @@ const SearchBranches = (props) => {
     // Creating handler for our warehouse input field
     const handleFormChangeWarehouse = event => {
         if (event.target.value.length > 5) {
+            // Preventing multiple notifications appearance
+            toast.dismiss();
+
             toast.error('В поле вводу номеру відділення не можливо ввести більше 5 цифр');
             return;
         }
@@ -47,6 +50,9 @@ const SearchBranches = (props) => {
     // Avoiding symbols "e", "E", "+", "-", ".", "," in input fields
     const handleKeyPressWarehouse = (event) => {
         if (event.currentTarget.value === '' && ['0'].includes(event.key)) {
+            // Preventing multiple notifications appearance
+            toast.dismiss();
+
             // Disallowing 0 to start the number of warehouse
             ['0'].includes(event.key) && event.preventDefault();
             toast.error('Номер відділення не може починатись з 0');
@@ -58,6 +64,9 @@ const SearchBranches = (props) => {
     // Creating submit handler
     const handleSubmit = event => {
         event.preventDefault();
+
+        // Preventing multiple notifications appearance
+        toast.dismiss();
 
         if (form.city === '') {
             return toast.error('Поле вводу назви міста не може бути пустим');

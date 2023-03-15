@@ -25,6 +25,9 @@ const Delivery = () => {
     };
     
     const handleSearchQuery = searchQueryValue => {
+        // Preventing multiple notifications appearance
+        toast.dismiss();
+
         if (searchQuery.ttn === searchQueryValue.ttn) {
             setSearchQuery(searchQueryValue);
             return toast.error("Цей ТТН вже відображено. Введіть новий пошуковий запит");

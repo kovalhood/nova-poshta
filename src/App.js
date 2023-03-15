@@ -4,7 +4,7 @@ import Wrapper from "./components/Wrapper";
 import TtnPage from "./pages/TtnPage";
 import BranchesPage from "./pages/BranchesPage";
 import ScrollToTop from 'react-scroll-up';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './services/styles';
 import sprite from './images/icons.svg';
@@ -38,7 +38,7 @@ function App() {
         </svg>
       </ScrollToTop>
       
-      <ToastContainer autoClose={3000} theme="colored" />
+      <ToastContainer autoClose={3000} theme="colored" transition={Slide}/>
     </>
   );
 }

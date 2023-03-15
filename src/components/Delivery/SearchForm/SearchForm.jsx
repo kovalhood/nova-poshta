@@ -14,6 +14,9 @@ const SearchForm = (props) => {
     // Creating handler for our TTN field
     const handleTtnChange = event => {
         if (event.target.value.length > 14) {
+            // Preventing multiple notifications appearance
+            toast.dismiss();
+
             toast.error('В поле вводу ТТН не можливо ввести більше 14 цифр');
             return;
         }
@@ -29,6 +32,9 @@ const SearchForm = (props) => {
     const handleKeyPress = (event) => {
         // Disallowing 0, 3, 4, 6, 7, 8, 9 to start the number of ttn
         if (event.currentTarget.value === '' && ['0', '3', '4', '6', '7', '8', '9'].includes(event.key)) {
+            // Preventing multiple notifications appearance
+            toast.dismiss();
+
             ['0', '3', '4', '6', '7', '8', '9'].includes(event.key) && event.preventDefault();
             toast.error('Номер ТТН повинен починатися з цифри 1, 2 або з 5');
         }
@@ -59,6 +65,9 @@ const SearchForm = (props) => {
     // Creating submit handler
     const handleSubmit = event => {
         event.preventDefault();
+
+        // Preventing multiple notifications appearance
+        toast.dismiss();
 
         if (form.ttn === '') {
             return toast.error('Поле вводу ТТН не може бути пустим');

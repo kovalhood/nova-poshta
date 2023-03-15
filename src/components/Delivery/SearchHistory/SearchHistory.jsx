@@ -38,7 +38,7 @@ const SearchHistory = ({searchQuery}) => {
                     <li key={id} className={s.history__item}>
                         <div className={s.history__event} onClick={(event) => handleHistorySearch(event, number)}>
                             <p className={s.history__time}>{new Date(date).toLocaleString()}</p>
-                            <a className={s.history__link} >{number}</a>
+                            <a className={s.history__link}>{number}</a>
                         </div>
                         <button type='button' className={s.delete_button} onClick={() => handleDeleteSearch(id)}>
                             <svg className={s.delete_button__icon} width="18" height="18">

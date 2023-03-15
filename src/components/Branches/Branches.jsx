@@ -7,6 +7,9 @@ const Branches = () => {
     const [searchQuery, setSearchQuery] = useState({ city: '', warehouse: '' });
 
     const handleBranchesSearch = searchQueryValue => {
+        // Preventing multiple notifications appearance
+        toast.dismiss();
+        
         if (searchQuery.city === searchQueryValue.city && searchQuery.warehouse === searchQueryValue.warehouse) {
             setSearchQuery(searchQueryValue);
             return toast.error("Введіть нову назву міста або номер відділення");
