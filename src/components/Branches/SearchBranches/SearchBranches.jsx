@@ -73,7 +73,7 @@ const SearchBranches = (props) => {
         }
 
         if (form.city.length < 3 ) {
-            return toast.error('Назва міста не може містити менше 2 літер');
+            return toast.error('Назва міста не може містити менше 3 літер');
         }
 
         if (form.city.length > 20 ) {
