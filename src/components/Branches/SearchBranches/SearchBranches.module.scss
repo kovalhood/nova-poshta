@@ -103,10 +103,12 @@
     left: 0;
     display: flex;
     flex-direction: column;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
     width: 100%;
     min-height: 20px;
     max-height: 158px;
-    padding: 5px 15px;
+    padding: 7px 15px;
     overflow: scroll;
     color: black;
     background-color: $whiteColor;
@@ -118,12 +120,12 @@
 
 
     @media screen and (min-width: 768px) {
-        max-height: 130px;
+        max-height: 135px;
     }
 }
 
 .cities_list__item{
-    padding: 5px;
+    padding: 7px 0;
     cursor: pointer;
     transition: $mainTransition;
 
@@ -132,4 +134,12 @@
             color: $accentColor;
         }
     }
+}
+
+.loader{
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    z-index: 30;
+    width: 100%;
 }

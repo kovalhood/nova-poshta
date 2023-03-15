@@ -4,12 +4,15 @@ import InputWarehouse from './InputWarehouse';
 import sprite from '../../../images/icons.svg';
 import { toast } from 'react-toastify';
 import { fetchCitiesList } from '../../../services/nova-poshta-api';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
+import BarLoader from "react-spinners/BarLoader";
 import s from './SearchBranches.module.scss';
 
 const SearchBranches = (props) => {
     const [form, setForm] = useState({ city: '', warehouse: '', cityRef: '' });
     const [citiesList, setCitiesList] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    let [color, setColor] = useState("#D9291C");
 
     // Creating handler for our city input field
     const handleFormChangeCity = event => {
@@ -18,6 +21,8 @@ const SearchBranches = (props) => {
 
         if(event.target.value.match(gerex) != null || event.target.value === ''){
             // Fetching dropdown menu with cities
+            setIsLoading(true);
+
             fetchCitiesList(event.target.value).then(res => res.data).then(data => {
                 if (data[0].Addresses !== []) {
                     setCitiesList(data[0].Addresses);
@@ -26,12 +31,13 @@ const SearchBranches = (props) => {
                 if (data[0].Addresses === []) {
                     setCitiesList([]);
                 }
-                
+
+                setIsLoading(false);
             });
             
             const { name, value } = event.currentTarget;
             setForm(prevForm => ({ ...prevForm, [name]: value }));
-        }
+        } 
 
         setForm(prevForm => ({ ...prevForm, cityRef: '' }));
     }
@@ -101,33 +107,24 @@ const SearchBranches = (props) => {
         // handleSearchInfo();        
         props.onQuerySearch(form);
         setCitiesList([]);
+        setIsLoading(false);
     };
 
     const onCityClick = (cityName, cityNameRef) => {
         setForm({ city: `${cityName}`, warehouse: '', cityRef: `${cityNameRef}` });
         setCitiesList([]);
+        setIsLoading(false);
     }
 
     const handleClearInput = event => {
+        setCitiesList([]);
+        setIsLoading(false);
         return setForm({ city: '' , warehouse: '', cityRef: ''});
     }
 
     return <form onSubmit={handleSubmit} className={s.search_form}>
         <InputCity name={form.city} onKeyPress={handleKeyPressCity} onCityChange={handleFormChangeCity} />
         <InputWarehouse name={form.warehouse} onKeyPress={handleKeyPressWarehouse} onWarehouseChange={handleFormChangeWarehouse} />
-
-        {/* Dropdown menu with cities */}
-        {(citiesList.length !== 0) ?
-            <ul className={s.cities_list}>
-                {citiesList.map(({ Present, MainDescription, DeliveryCity }) => (
-                    <li key={nanoid(6)} className={s.cities_list__item} onClick={() => onCityClick(MainDescription, DeliveryCity)}>
-                        <p>{Present}</p>
-                    </li>
-                ))}
-            </ul>
-            :
-            <></>
-        }
         
         {form.city === '' ?
             <span className={s.required_mark}></span>
@@ -150,6 +147,20 @@ const SearchBranches = (props) => {
                 <use href={`${sprite}#search`}></use>
             </svg>
         </button>
+
+                <div className={s.loader}><BarLoader color={color} loading={isLoading} width={'100%'}/></div>
+        
+        {/* Dropdown menu with cities */}
+        {(citiesList.length !== 0) ?
+            <ul className={s.cities_list}>
+                {citiesList.map(({ Present, MainDescription, DeliveryCity }) => (
+                    <li key={nanoid(6)} className={s.cities_list__item} onClick={() => onCityClick(MainDescription, DeliveryCity)}>
+                        <p>{Present}</p>
+                    </li>
+                ))}
+            </ul>
+            :<></>
+        }
     </form>
 };
 
