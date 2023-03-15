@@ -1,11 +1,11 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import BarLoader from "react-spinners/BarLoader";
+import { nanoid } from 'nanoid';
+import { fetchCitiesList } from '../../../services/nova-poshta-api';
 import InputCity from './InputCity/InputCity';
 import InputWarehouse from './InputWarehouse';
 import sprite from '../../../images/icons.svg';
-import { toast } from 'react-toastify';
-import { fetchCitiesList } from '../../../services/nova-poshta-api';
-import { nanoid } from 'nanoid';
-import BarLoader from "react-spinners/BarLoader";
 import s from './SearchBranches.module.scss';
 
 const SearchBranches = (props) => {

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { fetchTtnStatus } from '../../../services/nova-poshta-api';
+import { formattingDate, formattingRecipientDate } from '../../../services/formattingDateTime';
 import StatusSkeleton from './StatusSkeleton';
 import sprite from '../../../images/icons.svg';
-import { toast } from 'react-toastify';
-import { formattingStatusDate, formattingSenderDate, formattingRecipientDate } from '../../../services/formattingDateTime';
 import s from './DeliveryStatus.module.scss';
 
 const DeliveryStatus = ({searchQuery}) => {
@@ -21,20 +21,28 @@ const DeliveryStatus = ({searchQuery}) => {
         fetchTtnStatus(ttnSearch).then(res => res.data).then(data => {
             if (data[0] === undefined) {
                 setDeliveryData({ Status: undefined, WarehouseSender: undefined, WarehouseRecipient: undefined })
-                setTimeout(() => {
+                let timeout1 = setTimeout(() => {
                     setIsLoading(false);
                 }, 1000);
 
-                return toast.error("Доставки з таким ТТН не існує");
+                toast.error("Доставки з таким ТТН не існує");
+
+                return () => {
+                    clearTimeout(timeout1);
+                };
             }
 
             if (data[0].Status === 'Номер не найден') {
                 setDeliveryData({ Status: undefined, WarehouseSender: undefined, WarehouseRecipient: undefined })
-                setTimeout(() => {
+                let timeout2 = setTimeout(() => {
                     setIsLoading(false);
                 }, 1000);
 
-                return toast.error("Доставки з таким ТТН не існує");
+                toast.error("Доставки з таким ТТН не існує");
+
+                return () => {
+                    clearTimeout(timeout2);
+                };
             }
 
             setDeliveryData(data[0]);
@@ -57,7 +65,7 @@ const DeliveryStatus = ({searchQuery}) => {
                 {/* Date and time of taking delivery */}
                 {deliveryData.RecipientDateTime === '' || deliveryData.RecipientDateTime === undefined
                     ? <p className={s.status__date}>Час отримання: відсутній</p>
-                    : <p className={s.status__date}>Час отримання: {formattingStatusDate(deliveryData.RecipientDateTime)}</p> }    
+                    : <p className={s.status__date}>Час отримання: {formattingDate(deliveryData.RecipientDateTime)}</p> }    
                 
                 {/* Status of TTN */}
                 {deliveryData.Status === undefined || deliveryData.Status === 'Номер не найден'
@@ -77,7 +85,7 @@ const DeliveryStatus = ({searchQuery}) => {
                 {/* Date and time of delivery creation */}
                 {deliveryData.DateCreated === '' || deliveryData.DateCreated === undefined
                     ? <p className={s.status__date}>Час створення: відсутній</p>
-                    : <p className={s.status__date}>Час створення: {formattingSenderDate(deliveryData.DateCreated)}</p> }
+                    : <p className={s.status__date}>Час створення: {formattingDate(deliveryData.DateCreated)}</p> }
                 
                 {/* Address of sender */}
                 {deliveryData.WarehouseSender === '' || deliveryData.WarehouseSender === undefined

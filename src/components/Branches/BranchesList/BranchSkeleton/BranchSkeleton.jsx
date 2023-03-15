@@ -2,7 +2,6 @@ import Skeleton from 'react-loading-skeleton';
 import s from './BranchSkeleton.module.scss';
 
 const BranchSkeleton = ({amountOfCards}) => {
-
     return <>
         {
             amountOfCards.map((item) => (

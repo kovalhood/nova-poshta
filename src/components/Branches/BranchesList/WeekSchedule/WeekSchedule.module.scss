@@ -1,0 +1,18 @@
+@import "../../../../globalStyles/vars";
+
+.branches__schedule {
+    font-size: 13px;
+    margin-top: 10px;
+    color: $greyColor;
+    letter-spacing: $mainLetterSpacing;
+}
+
+.branches__schedule_open {
+    font-weight: 500;
+    color: $greenColor;
+}
+
+.branches__schedule_close {
+    font-weight: 500;
+    color: $accentColor;
+}

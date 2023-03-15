@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { getSearches } from '../../../redux/searches/searches-selectors';
 import InputTtn from './InputTtn';
 import sprite from '../../../images/icons.svg';
-import { toast } from 'react-toastify';
 import s from './SearchForm.module.scss';
 
 const SearchForm = (props) => {

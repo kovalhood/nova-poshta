@@ -1,5 +1,5 @@
-import { nanoid } from 'nanoid'
-import { createAction } from '@reduxjs/toolkit'
+import { createAction } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 
 const addSearch = createAction('searches/Add', (number) => ({
     payload: {

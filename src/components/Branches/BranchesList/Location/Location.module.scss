@@ -1,0 +1,20 @@
+@import "../../../../globalStyles/vars";
+
+.branches_location {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    color: $greyColorStatus;
+    transition: $mainTransition;
+
+    &__icon {
+            fill: currentColor;
+        }
+
+    @media (hover: hover) {
+        &:hover {
+            color: $accentColor;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import actions from './searches-actions'
+import actions from './searches-actions';
 
 const items = createReducer([], {
     [actions.addSearch]: (state, action) => [action.payload, ...state],
